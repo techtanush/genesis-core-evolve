@@ -79,7 +79,7 @@ export const CradleTraining = () => {
 
   return (
     <section ref={containerRef} className="relative" style={{ height: "520vh" }}>
-      <div className="sticky top-0 min-h-screen w-full overflow-hidden lg:h-screen">
+      <div className="sticky top-0 min-h-screen w-full overflow-y-auto overflow-x-hidden lg:h-screen lg:overflow-hidden">
         {/* Atmospheric backdrop */}
         <div className="absolute inset-0 grid-bg-fine opacity-40" />
         <div
@@ -106,7 +106,7 @@ export const CradleTraining = () => {
           </div>
         </div>
 
-        <div className="container relative z-10 h-full grid gap-6 pt-24 pb-20 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-20 lg:pb-12">
+        <div className="container relative z-10 min-h-screen grid gap-6 pt-24 pb-20 lg:h-full lg:min-h-0 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-20 lg:pb-12">
           {/* LEFT: Narrative copy */}
           <div className="relative min-h-[390px] lg:col-span-4 lg:flex lg:h-full lg:items-center">
             <div className="relative w-full min-h-[360px]">
@@ -206,6 +206,11 @@ export const CradleTraining = () => {
                 />
               </div>
             </div>
+          </div>
+
+          <div className="lg:hidden">
+            <ParallelTrials stage={stage} />
+            <RewardConsole stage={stage} />
           </div>
         </div>
 

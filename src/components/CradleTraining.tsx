@@ -70,6 +70,8 @@ export const CradleTraining = () => {
   const smooth = useSpring(scrollYProgress, { damping: 30, stiffness: 80 });
 
   const [stage, setStage] = useState(0);
+  const progressWidth = useTransform(smooth, [0, 1], ["0%", "100%"]);
+
   useEffect(() => {
     return smooth.on("change", (v) => {
       const s = Math.min(3, Math.max(0, Math.floor(v * 4)));
@@ -222,7 +224,7 @@ export const CradleTraining = () => {
               <div className="flex-1 h-px bg-border/40 relative">
                 <motion.div
                   className="absolute top-0 left-0 h-px bg-amber"
-                  style={{ width: useTransform(smooth, [0, 1], ["0%", "100%"]) }}
+                  style={{ width: progressWidth }}
                 />
               </div>
               <span>0{stage + 1}/04</span>

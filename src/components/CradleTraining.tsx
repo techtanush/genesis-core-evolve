@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { motion, useScroll, useSpring, useInView } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, useInView } from "framer-motion";
 
 /* ============================================================
    THE CRADLE — A scroll-driven training story.
@@ -78,8 +78,8 @@ export const CradleTraining = () => {
   }, [smooth]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "400vh" }}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <section ref={containerRef} className="relative" style={{ height: "520vh" }}>
+      <div className="sticky top-0 min-h-screen w-full overflow-hidden lg:h-screen">
         {/* Atmospheric backdrop */}
         <div className="absolute inset-0 grid-bg-fine opacity-40" />
         <div
@@ -106,10 +106,10 @@ export const CradleTraining = () => {
           </div>
         </div>
 
-        <div className="container h-full grid lg:grid-cols-12 gap-8 items-center pt-20 pb-12">
+        <div className="container relative z-10 h-full grid gap-6 pt-24 pb-20 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-20 lg:pb-12">
           {/* LEFT: Narrative copy */}
-          <div className="lg:col-span-5 relative h-full flex items-center">
-            <div className="relative w-full">
+          <div className="relative min-h-[390px] lg:col-span-4 lg:flex lg:h-full lg:items-center">
+            <div className="relative w-full min-h-[360px]">
               {STAGE_LABELS.map((s, i) => (
                 <motion.div
                   key={i}
@@ -120,7 +120,7 @@ export const CradleTraining = () => {
                     pointerEvents: stage === i ? "auto" : "none",
                   }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
+                  className="absolute inset-0 flex flex-col justify-center"
                 >
                   <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-amber mb-5">
                     {s.tag}
@@ -134,6 +134,15 @@ export const CradleTraining = () => {
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
                     {s.body}
                   </p>
+                  <div className="mt-7 space-y-2 max-w-md">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-cyan/70">learned laws written back</div>
+                    {s.learn.map((item) => (
+                      <div key={item} className="flex items-center gap-3 border-l border-amber/40 bg-obsidian-soft/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                        <span className="h-1.5 w-1.5 bg-amber pulse-amber" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
 
@@ -156,18 +165,18 @@ export const CradleTraining = () => {
           </div>
 
           {/* CENTER: The simulation chamber */}
-          <div className="lg:col-span-5 relative">
+          <div className="relative lg:col-span-5">
             <SimChamber stage={stage} />
           </div>
 
           {/* RIGHT: Telemetry */}
-          <div className="lg:col-span-2 hidden lg:block">
+          <div className="hidden lg:col-span-3 lg:block">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
               // telemetry
             </div>
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-3">
               {TELEMETRY.map((t) => (
-                <div key={t.k} className="border-l border-cyan/30 pl-3">
+                <div key={t.k} className="border border-border/60 bg-obsidian-soft/50 p-3">
                   <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
                     {t.k}
                   </div>
@@ -183,6 +192,8 @@ export const CradleTraining = () => {
                 </div>
               ))}
             </div>
+            <ParallelTrials stage={stage} compact />
+            <RewardConsole stage={stage} />
             <div className="mt-8">
               <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground mb-2">
                 FREE_ENERGY ↓

@@ -229,6 +229,86 @@ export const CradleTraining = () => {
   );
 };
 
+const ParallelTrials = ({ stage, compact = false }: { stage: number; compact?: boolean }) => {
+  const passRate = [9, 28, 63, 91][stage];
+
+  return (
+    <div className={compact ? "mt-6" : ""}>
+      <div className="mb-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
+        <span>// parallel failure farm</span>
+        <span className="text-cyan">pass_rate {passRate}%</span>
+      </div>
+      <div className="space-y-2">
+        {PARALLEL_TRIALS.map((trial, i) => {
+          const result = trial.result[stage];
+          const width = Math.max(8, Math.min(96, [16, 42, 71, 94][stage] - i * 3));
+
+          return (
+            <motion.div
+              key={trial.label}
+              initial={false}
+              animate={{ opacity: stage + 2 > i ? 1 : 0.38 }}
+              className="border border-border/50 bg-obsidian/55 p-2.5"
+            >
+              <div className="mb-2 flex items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.22em]">
+                <span className="text-foreground/80">{trial.label}</span>
+                <span className={result === "PASS" ? "text-cyan" : "text-amber"}>{result}</span>
+              </div>
+              <div className="mb-2 h-1 bg-border/50">
+                <motion.div
+                  className={result === "PASS" ? "h-full bg-cyan" : "h-full bg-amber"}
+                  animate={{ width: `${width}%` }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+              <div className="grid grid-cols-[0.82fr_1.18fr] gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground">
+                <span>{trial.signal}</span>
+                <span className="text-cyan/70">{stage > 0 ? trial.lesson : "recording failure trace"}</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const RewardConsole = ({ stage }: { stage: number }) => {
+  const weights = [
+    [32, 18, 24, 8],
+    [58, 36, 42, 29],
+    [76, 61, 65, 71],
+    [94, 88, 78, 93],
+  ][stage];
+
+  return (
+    <div className="mt-6 border border-amber/25 bg-obsidian-soft/45 p-4">
+      <div className="mb-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
+        <span>// reward parameters</span>
+        <span className="text-amber">curiosity online</span>
+      </div>
+      <div className="space-y-3">
+        {REWARD_PARAMS.map(([k, v, note], i) => (
+          <div key={k}>
+            <div className="mb-1.5 flex items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.2em]">
+              <span className="text-muted-foreground">{k}</span>
+              <span className={i === 0 ? "text-amber" : "text-cyan"}>{v}</span>
+            </div>
+            <div className="h-1 bg-border/40">
+              <motion.div
+                className={i === 0 ? "h-full bg-amber" : "h-full bg-cyan"}
+                animate={{ width: `${weights[i]}%` }}
+                transition={{ duration: 0.8, delay: i * 0.06 }}
+              />
+            </div>
+            <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground/70">{note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ---------- The simulated body inside the chamber ---------- */
 const SimChamber = ({ stage }: { stage: number }) => {
   // Joint targets per stage — random twitch → babble → controlled → reach

@@ -387,14 +387,14 @@ const SimChamber = ({ stage }: { stage: number }) => {
         <line x1="40" y1="320" x2="360" y2="320" stroke="hsl(186 100% 50% / 0.25)" strokeDasharray="2 6" />
 
         {/* Parallel test pods */}
-        {[
+        {([
           [80, 90, "FALL"], [318, 104, "CUP"], [78, 304, "GRIP"], [320, 310, "CLOTH"],
-        ].map(([px, py, label], i) => {
+        ] as const).map(([px, py, label], i) => {
           const active = stage * 1.3 + 1 > i;
           return (
-            <g key={String(label)} opacity={active ? 0.9 : 0.25}>
+            <g key={label} opacity={active ? 0.9 : 0.25}>
               <rect x={Number(px) - 28} y={Number(py) - 14} width="56" height="28" fill="hsl(0 0% 2% / 0.72)" stroke={active ? "hsl(45 100% 50% / 0.65)" : "hsl(186 100% 50% / 0.25)"} strokeWidth="0.7" />
-              <text x={Number(px)} y={Number(py) + 3} textAnchor="middle" fill={active ? "hsl(45 100% 50%)" : "hsl(186 100% 50% / 0.7)"} fontSize="8" fontFamily="JetBrains Mono">{String(label)}</text>
+              <text x={Number(px)} y={Number(py) + 3} textAnchor="middle" fill={active ? "hsl(45 100% 50%)" : "hsl(186 100% 50% / 0.7)"} fontSize="8" fontFamily="JetBrains Mono">{label}</text>
               <line x1={Number(px)} y1={Number(py) + (Number(py) < cy ? 14 : -14)} x2={cx} y2={cy} stroke="hsl(186 100% 50% / 0.18)" strokeDasharray="2 4" />
             </g>
           );

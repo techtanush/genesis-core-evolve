@@ -546,7 +546,7 @@ export const Chapter = ({
   italic: string;
   body: string;
   metrics: [string, string][];
-  visual: React.ReactNode;
+  visual: ReactNode;
   reverse?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);

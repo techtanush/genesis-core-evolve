@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import chipImg from "@/assets/genesis-core-chip.png";
 import robot1 from "@/assets/robot-organic-1.jpg";
 import robot2 from "@/assets/robot-organic-2.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
-import { GlowCursor, ScrambleText, Reveal, NeuralCard } from "@/components/Effects";
-import { NeuralFlow, WireframeChip } from "@/components/TechDiagrams";
+import { GlowCursor, ScrambleText, Reveal } from "@/components/Effects";
+import { WireframeChip } from "@/components/TechDiagrams";
 import { VibeTerminal } from "@/components/VibeTerminal";
+import { CradleTraining, Chapter } from "@/components/CradleTraining";
 import { WaitlistModal, FloatingAccess } from "@/components/Waitlist";
 import { toast } from "sonner";
 
@@ -187,20 +189,23 @@ const Index = () => {
       </section>
 
       {/* MANIFEST */}
-      <section id="manifest" className="relative py-32 border-y border-border/30">
+      <section id="manifest" className="relative py-32 md:py-40 border-y border-border/30">
         <div className="container grid md:grid-cols-2 gap-16 items-center">
           <Reveal>
             <div>
               <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">// 00 · Manifest</div>
-              <h2 className="text-5xl md:text-6xl font-bold tracking-[-0.03em] mb-8 leading-[1.05]">
-                Robots are not <span className="line-through text-muted-foreground/40">programmed</span>. <br/>
-                They are <span className="text-cyan text-glow-cyan italic font-light">grown</span>.
+              <h2
+                className="text-5xl md:text-7xl tracking-[-0.03em] mb-8 leading-[1.02]"
+                style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+              >
+                Robots are not <span className="line-through text-muted-foreground/40">programmed</span>.<br />
+                They are <span className="italic text-cyan text-glow-cyan">grown</span>.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                The current paradigm — write code, ship binary, hope for the best — has plateaued. Embodied intelligence requires a vertically integrated organism: simulation that birthed the agent, hardware that the agent can rewrite, silicon that thinks at the speed of reflex.
+                The current paradigm — write code, ship binary, hope for the best — has plateaued. Embodied intelligence requires a vertically integrated organism: a simulation that births the agent, hardware the agent can rewrite, silicon that thinks at the speed of reflex.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Roboscale is the first <span className="text-amber">sovereign stack</span> for physical intelligence.
+                Roboscale is the first <span className="text-amber">sovereign stack</span> for physical intelligence — told in four chapters.
               </p>
             </div>
           </Reveal>
@@ -216,89 +221,182 @@ const Index = () => {
         </div>
       </section>
 
-      {/* NEURAL FLOW DIAGRAM */}
+      {/* CHAPTER INDEX */}
       <section className="py-24 relative">
         <div className="container">
           <Reveal>
-            <div className="text-center mb-12">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-3">// Technical Flow · Active Inference Loop</div>
-              <h3 className="text-3xl md:text-4xl font-light tracking-tight">From <span className="text-amber">curiosity</span> to <span className="text-cyan">kinematics</span>.</h3>
-            </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="max-w-4xl mx-auto corner-frame border border-border/60 p-8 bg-obsidian-soft/50">
-              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-              <NeuralFlow />
-              <div className="mt-6 grid grid-cols-3 gap-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                <div><span className="text-cyan">[I]</span> SENSORY_TENSOR</div>
-                <div className="text-center"><span className="text-amber">[H]</span> WORLD_MODEL · 5 LAYERS</div>
-                <div className="text-right"><span className="text-cyan">[O]</span> MOTOR_POLICY</div>
+            <div className="grid md:grid-cols-2 gap-12 items-end mb-12 pb-8 border-b border-border/30">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// The Sovereign Stack · Four Chapters</div>
+                <h2
+                  className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02]"
+                  style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+                >
+                  How an organism <span className="italic text-amber">comes alive</span>.
+                </h2>
               </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* PILLARS */}
-      <section id="pillars" className="py-32 relative">
-        <div className="container">
-          <Reveal>
-            <div className="text-center mb-20">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-4">// Architecture · Four Pillars</div>
-              <h2 className="text-5xl md:text-7xl font-bold tracking-[-0.03em] leading-[0.95]">
-                The <span className="text-glow-amber text-amber">Sovereign</span> Stack.
-              </h2>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Read it like a story. Each chapter unfolds a layer of the sovereign stack — from the synthetic nursery where bodies first learn to feel, to the linguistic compiler that turns human intent into kinematic action.
+              </p>
             </div>
           </Reveal>
 
-          <div className="space-y-32">
-            {PILLARS.map((p, i) => (
-              <PillarRow key={p.n} pillar={p} index={i} />
+          <div className="grid md:grid-cols-4 gap-px bg-border/40">
+            {[
+              ["01", "THE CRADLE", "The synthetic nursery"],
+              ["02", "MORPHOGENETIC DEBUGGER", "Hardware that heals"],
+              ["03", "SOVEREIGN SELF-CHIP", "Neuromorphic instinct"],
+              ["04", "VIBE-CODING", "Intent → kinematics"],
+            ].map(([n, t, s], i) => (
+              <motion.a
+                key={n}
+                href={`#chapter-${n}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="group bg-obsidian p-6 hover:bg-obsidian-soft transition-colors relative"
+              >
+                <div
+                  className="text-5xl font-light text-amber/70 group-hover:text-amber transition-colors mb-4"
+                  style={{ fontFamily: "'Instrument Serif', serif" }}
+                >
+                  {n}
+                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan mb-2">{t}</div>
+                <div className="text-sm text-muted-foreground">{s}</div>
+                <div className="mt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50 group-hover:text-amber transition-colors">
+                  Read chapter →
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* VIBE TERMINAL */}
-      <section id="vibe" className="py-32 border-y border-border/30 bg-obsidian-soft/30 relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg-fine opacity-40" />
-        <div className="container relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <Reveal>
+      {/* CHAPTER 01 — CRADLE (scroll-driven training) */}
+      <div id="chapter-01" className="border-t border-border/30">
+        <div className="container py-12">
+          <div className="flex items-baseline justify-between pb-6 border-b border-border/30">
+            <div className="flex items-baseline gap-6">
+              <span
+                className="text-7xl md:text-8xl font-light text-amber/80 tabular-nums leading-none"
+                style={{ fontFamily: "'Instrument Serif', serif" }}
+              >
+                01
+              </span>
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// Pillar 04 · Live Demo</div>
-                <h2 className="text-4xl md:text-6xl font-bold tracking-[-0.03em] mb-6 leading-[1]">
-                  Type a <span className="text-amber italic font-light">vibe</span>.<br/>Compile a <span className="text-cyan">behavior</span>.
-                </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  The abstraction layer between human intent and robotic execution — eliminated. Operators describe outcomes in natural language. Roboscale orchestrates the Cradle, the Debugger, and the Self-Chip to compile, simulate, and deploy.
-                </p>
-                <div className="font-mono text-xs text-muted-foreground space-y-1">
-                  <div><span className="text-amber">▸</span> 2.4k tokens/s linguistic compiler</div>
-                  <div><span className="text-amber">▸</span> 99.4% kinematic translation fidelity</div>
-                  <div><span className="text-amber">▸</span> Zero-shot deployment to G_47 vessels</div>
-                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-cyan mb-1.5">CHAPTER · THE CRADLE</div>
+                <div className="font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">A body learns it has a self</div>
               </div>
-            </Reveal>
-            <Reveal delay={200}>
-              <VibeTerminal />
-            </Reveal>
+            </div>
+            <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              <span className="h-px w-12 bg-border" />
+              <span>01/04</span>
+            </div>
           </div>
         </div>
-      </section>
+        <CradleTraining />
+      </div>
 
-      {/* CINEMATIC IMAGE BREAK */}
+      {/* CHAPTER 02 — MORPHOGENETIC DEBUGGER */}
+      <div id="chapter-02">
+        <Chapter
+          num="02"
+          tag="MORPHOGENETIC DEBUGGER"
+          eyebrow="Software rewriting hardware DNA"
+          title="When the body fails,"
+          italic="evolve the body."
+          body="A traditional system retrains until it overfits to bad hardware. Roboscale doesn't. The Morphogenetic Debugger inspects every kinematic failure — torque saturation, lever inefficiency, joint geometry — and emits a generative CAD patch. The next vessel is not a tweak. It is a new organism, designed by the previous one's regrets."
+          metrics={[["CAD_PATCHES", "7,402"], ["TORQUE_Δ", "+31.2 Nm"], ["GENERATION", "G_47"]]}
+          reverse
+          visual={
+            <div className="relative corner-frame border border-cyan/40 bg-obsidian-soft/60 aspect-[4/5] overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <img src={robotLimb} alt="Morphogenetic limb wireframe" className="absolute inset-0 w-full h-full object-cover opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-obsidian via-transparent to-cyan/10" />
+              <div className="absolute inset-0 grid-bg-fine opacity-50 mix-blend-screen" />
+              {/* annotation lines */}
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 500">
+                <g stroke="hsl(186 100% 50% / 0.7)" strokeWidth="0.6" fill="none">
+                  <line x1="80" y1="120" x2="200" y2="180" />
+                  <circle cx="200" cy="180" r="4" fill="hsl(186 100% 50%)" />
+                  <line x1="320" y1="280" x2="240" y2="260" />
+                  <circle cx="240" cy="260" r="4" fill="hsl(45 100% 50%)" />
+                  <line x1="60" y1="380" x2="180" y2="350" />
+                  <circle cx="180" cy="350" r="4" fill="hsl(186 100% 50%)" />
+                </g>
+                <text x="20" y="115" fill="hsl(186 100% 50%)" fontSize="9" fontFamily="JetBrains Mono">JOINT_07 · TORQUE</text>
+                <text x="280" y="295" fill="hsl(45 100% 50%)" fontSize="9" fontFamily="JetBrains Mono">CAD_PATCH_412</text>
+                <text x="20" y="395" fill="hsl(186 100% 50%)" fontSize="9" fontFamily="JetBrains Mono">LEVER_RATIO 1.42</text>
+              </svg>
+              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan/80">◇ debugger.viz · G_46 → G_47</div>
+              <div className="absolute bottom-3 right-3 font-mono text-[10px] uppercase tracking-[0.3em] text-amber pulse-amber">● PATCHING</div>
+            </div>
+          }
+        />
+      </div>
+
+      {/* CHAPTER 03 — SOVEREIGN SELF-CHIP */}
+      <div id="chapter-03">
+        <Chapter
+          num="03"
+          tag="SOVEREIGN SELF-CHIP"
+          eyebrow="The reflexive REPL core"
+          title="A mind that thinks"
+          italic="at the speed of reflex."
+          body="Cloud latency is fatal in the physical world. The Sovereign Self-Chip is a custom neuromorphic substrate — a Mental REPL that runs counterfactual simulations locally. The agent imagines two seconds into the future, adjusts a motor policy mid-stride, and never asks the cloud for permission. Sovereignty is the latency budget."
+          metrics={[["LATENCY", "1.8s"], ["TDP", "150W"], ["SYNAPSES", "1.02T/mm²"]]}
+          visual={
+            <div className="relative corner-frame border border-amber/40 bg-obsidian-soft/60 aspect-square overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <div className="absolute inset-0 grid-bg-fine opacity-40" />
+              <div className="absolute inset-0 flex items-center justify-center p-10">
+                <WireframeChip />
+              </div>
+              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80">◇ self_chip.die · 3nm class</div>
+              <div className="absolute bottom-3 right-3 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan pulse-cyan">● REPL ACTIVE</div>
+            </div>
+          }
+        />
+      </div>
+
+      {/* CHAPTER 04 — VIBE-CODING */}
+      <div id="chapter-04">
+        <Chapter
+          num="04"
+          tag="VIBE-CODING"
+          eyebrow="Natural language kinematics"
+          title="Type a vibe."
+          italic="Compile a behavior."
+          body="The abstraction between human intent and robotic execution — eliminated. Operators describe outcomes in plain language. Roboscale orchestrates the Cradle, the Debugger, and the Self-Chip to compile, simulate, and deploy. No SDK. No teleop. Just intent."
+          metrics={[["TOKENS/s", "2.4k"], ["COMPILE", "920ms"], ["FIDELITY", "99.4%"]]}
+          reverse
+          visual={
+            <div id="vibe">
+              <VibeTerminal />
+            </div>
+          }
+        />
+      </div>
+
+      {/* CINEMATIC CLOSER */}
       <section className="py-32 relative">
         <div className="container">
           <Reveal>
             <div className="relative corner-frame border border-cyan/30 p-2 max-w-6xl mx-auto">
               <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
               <img src={robot1} alt="Sovereign organic robot" width={1920} height={1080} loading="lazy" className="w-full" />
-              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                  <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-2">// Field Capture · Lab_03 · 2036.04.18</div>
-                  <h3 className="text-3xl md:text-5xl font-light tracking-tight max-w-2xl">An organism that knows it has a body.</h3>
+                  <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-3">// Field Capture · Lab_03 · 2036.04.18</div>
+                  <h3
+                    className="text-3xl md:text-6xl tracking-tight max-w-3xl leading-[1.02]"
+                    style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+                  >
+                    An organism that knows <span className="italic text-amber">it has a body.</span>
+                  </h3>
                 </div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber">
                   ● REC · 04:18:22:11
@@ -349,122 +447,6 @@ const Index = () => {
           </nav>
         </div>
       </footer>
-    </div>
-  );
-};
-
-const PillarRow = ({ pillar, index }: { pillar: typeof PILLARS[number]; index: number }) => {
-  const reverse = index % 2 === 1;
-  const accent = pillar.accent === "amber" ? "amber" : "cyan";
-  const accentClass = accent === "amber" ? "text-amber" : "text-cyan";
-  const accentBorder = accent === "amber" ? "border-amber/40" : "border-cyan/40";
-
-  return (
-    <Reveal>
-      <div className={`grid lg:grid-cols-12 gap-8 items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
-        {/* Visual */}
-        <div className="lg:col-span-5">
-          <NeuralCard className={`relative corner-frame border ${accentBorder} bg-obsidian-soft/60 aspect-square overflow-hidden`}>
-            <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-            <PillarVisual index={index} />
-            <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/80">
-              ◇ {pillar.tag.toLowerCase().replace(/\s/g, "_")}.viz
-            </div>
-            <div className={`absolute bottom-3 right-3 font-mono text-[10px] uppercase tracking-[0.3em] ${accentClass} pulse-amber`}>
-              ● ACTIVE
-            </div>
-          </NeuralCard>
-        </div>
-
-        {/* Content */}
-        <div className="lg:col-span-5">
-          <div className={`font-mono text-xs uppercase tracking-[0.4em] mb-4 ${accentClass}`}>
-            // Pillar {pillar.n} · {pillar.tag}
-          </div>
-          <div className="text-sm font-mono uppercase tracking-[0.25em] text-muted-foreground mb-3">{pillar.sub}</div>
-          <h3 className="text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-6 leading-[1.05]">
-            {pillar.title}
-          </h3>
-          <p className="text-lg text-muted-foreground leading-relaxed">{pillar.body}</p>
-          <div className="mt-8 grid grid-cols-3 gap-3">
-            {pillar.metrics.map(([k, v]) => (
-              <div key={k} className="border border-border/70 bg-obsidian-soft/60 p-3">
-                <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground mb-1">{k}</div>
-                <div className={`font-mono text-base ${accentClass}`}>{v}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Tech Sidebar */}
-        <div className="lg:col-span-2">
-          <div className="border border-border/40 bg-obsidian-soft/50 p-3 h-72 overflow-hidden relative">
-            <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground mb-2">// data_stream</div>
-            <div className="data-stream font-mono text-[9px] leading-relaxed text-cyan/50">
-              {[...HEX_STREAM, ...HEX_STREAM].map((line, i) => (
-                <div key={i} className={i % 7 === 0 ? "text-amber/70" : ""}>{line}</div>
-              ))}
-            </div>
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-obsidian-soft to-transparent pointer-events-none" />
-            <div className="absolute inset-x-0 top-8 h-8 bg-gradient-to-b from-obsidian-soft to-transparent pointer-events-none" />
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  );
-};
-
-const PillarVisual = ({ index }: { index: number }) => {
-  if (index === 0) {
-    // Cradle - particle field
-    return (
-      <div className="absolute inset-0 grid-bg-fine flex items-center justify-center">
-        <svg viewBox="0 0 200 200" className="w-3/4 h-3/4">
-          {Array.from({ length: 50 }).map((_, i) => {
-            const x = Math.random() * 200, y = Math.random() * 200;
-            return <circle key={i} cx={x} cy={y} r={Math.random() * 2 + 0.5} fill={i % 5 === 0 ? "hsl(45 100% 50%)" : "hsl(186 100% 50% / 0.5)"}>
-              <animate attributeName="opacity" values="0.2;1;0.2" dur={`${2 + Math.random() * 3}s`} repeatCount="indefinite" />
-            </circle>;
-          })}
-          <circle cx="100" cy="100" r="30" fill="none" stroke="hsl(45 100% 50% / 0.3)" strokeDasharray="2 4">
-            <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="20s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="100" cy="100" r="50" fill="none" stroke="hsl(186 100% 50% / 0.3)" strokeDasharray="3 6">
-            <animateTransform attributeName="transform" type="rotate" from="360 100 100" to="0 100 100" dur="30s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="100" cy="100" r="6" fill="hsl(45 100% 50%)" />
-        </svg>
-      </div>
-    );
-  }
-  if (index === 1) {
-    return (
-      <div className="absolute inset-0 grid-bg-fine">
-        <img src={robotLimb} alt="Morphogenetic limb wireframe" className="w-full h-full object-cover opacity-70 mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan/10 via-transparent to-amber/10" />
-      </div>
-    );
-  }
-  if (index === 2) {
-    return (
-      <div className="absolute inset-0 grid-bg-fine flex items-center justify-center p-8">
-        <WireframeChip />
-      </div>
-    );
-  }
-  return (
-    <div className="absolute inset-0 grid-bg-fine flex items-center justify-center font-mono p-6">
-      <div className="text-cyan/70 text-xs space-y-1.5 w-full">
-        <div className="text-amber">$ vibe-compile</div>
-        <div className="text-foreground/80">→ parsing intent_tree…</div>
-        <div className="text-foreground/80">→ kinematic graph: 47 nodes</div>
-        <div className="text-foreground/80">→ binding to chassis G_47</div>
-        <div className="text-amber pulse-amber">[OK] policy.bin · 312 lines</div>
-        <div className="mt-4 h-px bg-cyan/30" />
-        <div className="text-cyan/60 mt-2">FIDELITY ████████░░ 99.4%</div>
-        <div className="text-amber/80">LATENCY  ███████░░░ 0.92s</div>
-        <div className="text-cyan/60">REPL     █████████░ 1.8s</div>
-      </div>
     </div>
   );
 };

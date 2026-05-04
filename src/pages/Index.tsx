@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import chipImg from "@/assets/genesis-core-chip.png";
 import robot1 from "@/assets/robot-organic-1.jpg";
 import robot2 from "@/assets/robot-organic-2.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
-import { GlowCursor, ScrambleText, Reveal, NeuralCard } from "@/components/Effects";
-import { NeuralFlow, WireframeChip } from "@/components/TechDiagrams";
+import { GlowCursor, ScrambleText, Reveal } from "@/components/Effects";
+import { WireframeChip } from "@/components/TechDiagrams";
 import { VibeTerminal } from "@/components/VibeTerminal";
+import { CradleTraining, Chapter } from "@/components/CradleTraining";
 import { WaitlistModal, FloatingAccess } from "@/components/Waitlist";
 import { toast } from "sonner";
 

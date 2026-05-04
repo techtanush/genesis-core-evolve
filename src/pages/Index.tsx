@@ -276,7 +276,7 @@ const Index = () => {
 
       {/* CHAPTER 01 — CRADLE (scroll-driven training) */}
       <div id="chapter-01" className="border-t border-border/30">
-        <div className="container py-12">
+        <div className="container py-14 md:py-20">
           <div className="flex items-baseline justify-between pb-6 border-b border-border/30">
             <div className="flex items-baseline gap-6">
               <span
@@ -293,6 +293,33 @@ const Index = () => {
             <div className="hidden md:flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
               <span className="h-px w-12 bg-border" />
               <span>01/04</span>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 pt-10 md:pt-14 items-end">
+            <div className="lg:col-span-7">
+              <h2
+                className="text-4xl md:text-7xl leading-[1.02] tracking-[-0.03em] mb-6"
+                style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
+              >
+                The Cradle is not one simulation. It is a <span className="italic text-amber text-glow-amber">failure engine</span> running in parallel.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+                Every dropped cup, collapsed knee, over-tight grip, spilled liquid, missed catch, and recovered fall writes a small law of physics back into the agent. Curiosity is rewarded, task success is rewarded, and safe failure is preserved until common sense emerges.
+              </p>
+            </div>
+            <div className="lg:col-span-5 grid sm:grid-cols-3 lg:grid-cols-1 gap-3 font-mono text-[10px] uppercase tracking-[0.24em]">
+              {[
+                ["parallel worlds", "1,048,576", "failed tests still train"],
+                ["physics priors", "gravity · water · friction", "laws learned by contact"],
+                ["reward shape", "curiosity + task + safe_fail", "common sense parameters"],
+              ].map(([k, v, s]) => (
+                <div key={k} className="border border-border/60 bg-obsidian-soft/50 p-4">
+                  <div className="text-muted-foreground mb-2">{k}</div>
+                  <div className="text-amber mb-2">{v}</div>
+                  <div className="text-cyan/70 text-[8px] tracking-[0.2em]">{s}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

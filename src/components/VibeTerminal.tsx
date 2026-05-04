@@ -9,7 +9,7 @@ export const VibeTerminal = () => {
   const [idx, setIdx] = useState(0);
   const [typed, setTyped] = useState("");
   const [outLines, setOutLines] = useState<string[]>([]);
-  const tRef = useRef<NodeJS.Timeout | null>(null);
+  const tRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const v = VIBES[idx];

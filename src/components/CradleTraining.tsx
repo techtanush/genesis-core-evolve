@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { motion, useScroll, useSpring, useInView } from "framer-motion";
 
 /* ============================================================
    THE CRADLE — A scroll-driven training story.
@@ -11,16 +11,54 @@ import { motion, useScroll, useTransform, useSpring, useInView } from "framer-mo
 
 const TELEMETRY = [
   { k: "EPOCH", v: ["000,001", "184,302", "612,990", "1,204,773"] },
+  { k: "PARALLEL_TRIALS", v: ["008,192", "065,536", "524,288", "1,048,576"] },
+  { k: "CURIOSITY_REWARD", v: ["+0.12", "+0.48", "+0.81", "+0.94"] },
+  { k: "COMMON_SENSE", v: ["0.02", "0.34", "0.76", "0.93"] },
   { k: "FREE_ENERGY", v: ["9.412", "4.118", "1.802", "0.241"] },
   { k: "WORLD_MODEL", v: ["v0.0", "v1.2", "v2.7", "v3.1"] },
-  { k: "BODY_AWARENESS", v: ["0.04", "0.31", "0.78", "0.97"] },
 ];
 
 const STAGE_LABELS = [
-  { tag: "STAGE 01 · SPAWN", title: "A body without a self.", body: "The vessel is instantiated inside the synthetic nursery. It has joints, tendons, mass — but no awareness of any of it. Random voltages cascade through actuators. Twitch. Fall. Reset." },
-  { tag: "STAGE 02 · MOTOR BABBLING", title: "Curiosity as a force of nature.", body: "Driven by Active Inference, the agent generates motor outputs to minimize surprise. It learns its own arm exists. It learns the floor pushes back. The world model begins to compile, neuron by neuron." },
-  { tag: "STAGE 03 · CONVERGENCE", title: "Gravity, friction, and self.", body: "Free Energy collapses. The agent's predictions about its body align with reality. It internalizes inertia, contact, torque limits — physics is no longer learned, it is felt." },
-  { tag: "STAGE 04 · INTENT", title: "From feeling to acting.", body: "The agent generates goal-conditioned trajectories. Reach. Grasp. Place. The Cradle releases the vessel — born already knowing how to inhabit a body." },
+  {
+    tag: "STAGE 01 · SPAWN",
+    title: "First it fails at being a body.",
+    body: "The Cradle births thousands of unstable copies at once. Some tip over. Some fling a cup into the floor. Some over-grip until the object collapses. Nothing is wasted: every failure becomes a gradient for physics, balance, contact, and consequence.",
+    learn: ["The floor pushes back", "Mass resists acceleration", "A cup spills when tilted past its lip"],
+  },
+  {
+    tag: "STAGE 02 · MOTOR BABBLING",
+    title: "Curiosity becomes the engine.",
+    body: "Agents are rewarded for reducing uncertainty, not merely completing a task. They poke water, drag fabric, drop tools, miss catches, and learn what changes. Parallel worlds explore millions of wrong answers so the surviving policy understands why the right one works.",
+    learn: ["Water falls downward and keeps flowing", "Soft objects deform before they move", "Friction changes with surface and force"],
+  },
+  {
+    tag: "STAGE 03 · CONVERGENCE",
+    title: "Failures compress into common sense.",
+    body: "Pass/fail traces are distilled into parameters: balance margin, spill risk, crush risk, recovery cost, novelty reward. The model learns that a glass can be carried quickly only when orientation, grip pressure, and acceleration agree.",
+    learn: ["Fast motion creates slosh", "Grip force must match fragility", "Recovery is cheaper before collapse"],
+  },
+  {
+    tag: "STAGE 04 · INTENT",
+    title: "Then it acts like it knows the world.",
+    body: "The best policy is not the one that never failed. It is the one trained by every failure. The Cradle releases an embodied agent with a usable prior: how liquids fall, objects break, limbs recover, and curiosity should be spent.",
+    learn: ["Plan before contact", "Seek novelty when safe", "Protect the task while exploring"],
+  },
+];
+
+const PARALLEL_TRIALS = [
+  { label: "BALANCE", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "center_of_mass", lesson: "Feet widen before torque spikes" },
+  { label: "CUP/WATER", result: ["FAIL", "FAIL", "FAIL", "PASS"], signal: "spill_risk", lesson: "Tilt + acceleration predicts liquid escape" },
+  { label: "FRAGILE GRIP", result: ["FAIL", "PASS", "PASS", "PASS"], signal: "crush_limit", lesson: "Pressure must rise slower than deformation" },
+  { label: "SOFT CLOTH", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "deform_field", lesson: "Pull points create delayed motion" },
+  { label: "RECOVERY", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "fall_vector", lesson: "Catch before the hip exits support" },
+  { label: "TOOL USE", result: ["FAIL", "FAIL", "FAIL", "PASS"], signal: "lever_gain", lesson: "Longer radius trades precision for force" },
+];
+
+const REWARD_PARAMS = [
+  ["curiosity", "+0.94", "Reward novelty that reduces uncertainty"],
+  ["task_pass", "+1.00", "Complete the requested behavior"],
+  ["safe_fail", "+0.31", "Fail without damaging body or world"],
+  ["common_sense", "+0.88", "Transfer learned physics to new scenes"],
 ];
 
 export const CradleTraining = () => {

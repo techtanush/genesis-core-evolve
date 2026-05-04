@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { motion, useScroll, useSpring, useTransform, useInView } from "framer-motion";
 
 /* ============================================================
    THE CRADLE — A scroll-driven training story.
@@ -11,16 +11,54 @@ import { motion, useScroll, useTransform, useSpring, useInView } from "framer-mo
 
 const TELEMETRY = [
   { k: "EPOCH", v: ["000,001", "184,302", "612,990", "1,204,773"] },
+  { k: "PARALLEL_TRIALS", v: ["008,192", "065,536", "524,288", "1,048,576"] },
+  { k: "CURIOSITY_REWARD", v: ["+0.12", "+0.48", "+0.81", "+0.94"] },
+  { k: "COMMON_SENSE", v: ["0.02", "0.34", "0.76", "0.93"] },
   { k: "FREE_ENERGY", v: ["9.412", "4.118", "1.802", "0.241"] },
   { k: "WORLD_MODEL", v: ["v0.0", "v1.2", "v2.7", "v3.1"] },
-  { k: "BODY_AWARENESS", v: ["0.04", "0.31", "0.78", "0.97"] },
 ];
 
 const STAGE_LABELS = [
-  { tag: "STAGE 01 · SPAWN", title: "A body without a self.", body: "The vessel is instantiated inside the synthetic nursery. It has joints, tendons, mass — but no awareness of any of it. Random voltages cascade through actuators. Twitch. Fall. Reset." },
-  { tag: "STAGE 02 · MOTOR BABBLING", title: "Curiosity as a force of nature.", body: "Driven by Active Inference, the agent generates motor outputs to minimize surprise. It learns its own arm exists. It learns the floor pushes back. The world model begins to compile, neuron by neuron." },
-  { tag: "STAGE 03 · CONVERGENCE", title: "Gravity, friction, and self.", body: "Free Energy collapses. The agent's predictions about its body align with reality. It internalizes inertia, contact, torque limits — physics is no longer learned, it is felt." },
-  { tag: "STAGE 04 · INTENT", title: "From feeling to acting.", body: "The agent generates goal-conditioned trajectories. Reach. Grasp. Place. The Cradle releases the vessel — born already knowing how to inhabit a body." },
+  {
+    tag: "STAGE 01 · SPAWN",
+    title: "First it fails at being a body.",
+    body: "The Cradle births thousands of unstable copies at once. Some tip over. Some fling a cup into the floor. Some over-grip until the object collapses. Nothing is wasted: every failure becomes a gradient for physics, balance, contact, and consequence.",
+    learn: ["The floor pushes back", "Mass resists acceleration", "A cup spills when tilted past its lip"],
+  },
+  {
+    tag: "STAGE 02 · MOTOR BABBLING",
+    title: "Curiosity becomes the engine.",
+    body: "Agents are rewarded for reducing uncertainty, not merely completing a task. They poke water, drag fabric, drop tools, miss catches, and learn what changes. Parallel worlds explore millions of wrong answers so the surviving policy understands why the right one works.",
+    learn: ["Water falls downward and keeps flowing", "Soft objects deform before they move", "Friction changes with surface and force"],
+  },
+  {
+    tag: "STAGE 03 · CONVERGENCE",
+    title: "Failures compress into common sense.",
+    body: "Pass/fail traces are distilled into parameters: balance margin, spill risk, crush risk, recovery cost, novelty reward. The model learns that a glass can be carried quickly only when orientation, grip pressure, and acceleration agree.",
+    learn: ["Fast motion creates slosh", "Grip force must match fragility", "Recovery is cheaper before collapse"],
+  },
+  {
+    tag: "STAGE 04 · INTENT",
+    title: "Then it acts like it knows the world.",
+    body: "The best policy is not the one that never failed. It is the one trained by every failure. The Cradle releases an embodied agent with a usable prior: how liquids fall, objects break, limbs recover, and curiosity should be spent.",
+    learn: ["Plan before contact", "Seek novelty when safe", "Protect the task while exploring"],
+  },
+];
+
+const PARALLEL_TRIALS = [
+  { label: "BALANCE", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "center_of_mass", lesson: "Feet widen before torque spikes" },
+  { label: "CUP/WATER", result: ["FAIL", "FAIL", "FAIL", "PASS"], signal: "spill_risk", lesson: "Tilt + acceleration predicts liquid escape" },
+  { label: "FRAGILE GRIP", result: ["FAIL", "PASS", "PASS", "PASS"], signal: "crush_limit", lesson: "Pressure must rise slower than deformation" },
+  { label: "SOFT CLOTH", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "deform_field", lesson: "Pull points create delayed motion" },
+  { label: "RECOVERY", result: ["FAIL", "FAIL", "PASS", "PASS"], signal: "fall_vector", lesson: "Catch before the hip exits support" },
+  { label: "TOOL USE", result: ["FAIL", "FAIL", "FAIL", "PASS"], signal: "lever_gain", lesson: "Longer radius trades precision for force" },
+];
+
+const REWARD_PARAMS = [
+  ["curiosity", "+0.94", "Reward novelty that reduces uncertainty"],
+  ["task_pass", "+1.00", "Complete the requested behavior"],
+  ["safe_fail", "+0.31", "Fail without damaging body or world"],
+  ["common_sense", "+0.88", "Transfer learned physics to new scenes"],
 ];
 
 export const CradleTraining = () => {
@@ -32,6 +70,8 @@ export const CradleTraining = () => {
   const smooth = useSpring(scrollYProgress, { damping: 30, stiffness: 80 });
 
   const [stage, setStage] = useState(0);
+  const progressWidth = useTransform(smooth, [0, 1], ["0%", "100%"]);
+
   useEffect(() => {
     return smooth.on("change", (v) => {
       const s = Math.min(3, Math.max(0, Math.floor(v * 4)));
@@ -40,8 +80,8 @@ export const CradleTraining = () => {
   }, [smooth]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "400vh" }}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+    <section ref={containerRef} className="relative" style={{ height: "520vh" }}>
+      <div className="sticky top-0 min-h-screen w-full overflow-y-auto overflow-x-hidden lg:h-screen lg:overflow-hidden">
         {/* Atmospheric backdrop */}
         <div className="absolute inset-0 grid-bg-fine opacity-40" />
         <div
@@ -68,10 +108,10 @@ export const CradleTraining = () => {
           </div>
         </div>
 
-        <div className="container h-full grid lg:grid-cols-12 gap-8 items-center pt-20 pb-12">
+        <div className="container relative z-10 min-h-screen grid gap-6 pt-24 pb-20 lg:h-full lg:min-h-0 lg:grid-cols-12 lg:items-center lg:gap-8 lg:pt-20 lg:pb-12">
           {/* LEFT: Narrative copy */}
-          <div className="lg:col-span-5 relative h-full flex items-center">
-            <div className="relative w-full">
+          <div className="relative min-h-[390px] lg:col-span-4 lg:flex lg:h-full lg:items-center">
+            <div className="relative w-full min-h-[360px]">
               {STAGE_LABELS.map((s, i) => (
                 <motion.div
                   key={i}
@@ -82,7 +122,7 @@ export const CradleTraining = () => {
                     pointerEvents: stage === i ? "auto" : "none",
                   }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
+                  className="absolute inset-0 flex flex-col justify-center"
                 >
                   <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-amber mb-5">
                     {s.tag}
@@ -96,6 +136,15 @@ export const CradleTraining = () => {
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-md">
                     {s.body}
                   </p>
+                  <div className="mt-7 space-y-2 max-w-md">
+                    <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-cyan/70">learned laws written back</div>
+                    {s.learn.map((item) => (
+                      <div key={item} className="flex items-center gap-3 border-l border-amber/40 bg-obsidian-soft/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                        <span className="h-1.5 w-1.5 bg-amber pulse-amber" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
 
@@ -118,18 +167,18 @@ export const CradleTraining = () => {
           </div>
 
           {/* CENTER: The simulation chamber */}
-          <div className="lg:col-span-5 relative">
+          <div className="relative lg:col-span-5">
             <SimChamber stage={stage} />
           </div>
 
           {/* RIGHT: Telemetry */}
-          <div className="lg:col-span-2 hidden lg:block">
+          <div className="hidden lg:col-span-3 lg:block">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
               // telemetry
             </div>
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-3">
               {TELEMETRY.map((t) => (
-                <div key={t.k} className="border-l border-cyan/30 pl-3">
+                <div key={t.k} className="border border-border/60 bg-obsidian-soft/50 p-3">
                   <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
                     {t.k}
                   </div>
@@ -145,6 +194,8 @@ export const CradleTraining = () => {
                 </div>
               ))}
             </div>
+            <ParallelTrials stage={stage} compact />
+            <RewardConsole stage={stage} />
             <div className="mt-8">
               <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground mb-2">
                 FREE_ENERGY ↓
@@ -158,6 +209,11 @@ export const CradleTraining = () => {
               </div>
             </div>
           </div>
+
+          <div className="lg:hidden">
+            <ParallelTrials stage={stage} />
+            <RewardConsole stage={stage} />
+          </div>
         </div>
 
         {/* Bottom scrub indicator */}
@@ -168,7 +224,7 @@ export const CradleTraining = () => {
               <div className="flex-1 h-px bg-border/40 relative">
                 <motion.div
                   className="absolute top-0 left-0 h-px bg-amber"
-                  style={{ width: useTransform(smooth, [0, 1], ["0%", "100%"]) }}
+                  style={{ width: progressWidth }}
                 />
               </div>
               <span>0{stage + 1}/04</span>
@@ -177,6 +233,86 @@ export const CradleTraining = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const ParallelTrials = ({ stage, compact = false }: { stage: number; compact?: boolean }) => {
+  const passRate = [9, 28, 63, 91][stage];
+
+  return (
+    <div className={compact ? "mt-6" : ""}>
+      <div className="mb-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
+        <span>// parallel failure farm</span>
+        <span className="text-cyan">pass_rate {passRate}%</span>
+      </div>
+      <div className="space-y-2">
+        {PARALLEL_TRIALS.map((trial, i) => {
+          const result = trial.result[stage];
+          const width = Math.max(8, Math.min(96, [16, 42, 71, 94][stage] - i * 3));
+
+          return (
+            <motion.div
+              key={trial.label}
+              initial={false}
+              animate={{ opacity: stage + 2 > i ? 1 : 0.38 }}
+              className="border border-border/50 bg-obsidian/55 p-2.5"
+            >
+              <div className="mb-2 flex items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.22em]">
+                <span className="text-foreground/80">{trial.label}</span>
+                <span className={result === "PASS" ? "text-cyan" : "text-amber"}>{result}</span>
+              </div>
+              <div className="mb-2 h-1 bg-border/50">
+                <motion.div
+                  className={result === "PASS" ? "h-full bg-cyan" : "h-full bg-amber"}
+                  animate={{ width: `${width}%` }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+              <div className="grid grid-cols-[0.82fr_1.18fr] gap-2 font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground">
+                <span>{trial.signal}</span>
+                <span className="text-cyan/70">{stage > 0 ? trial.lesson : "recording failure trace"}</span>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const RewardConsole = ({ stage }: { stage: number }) => {
+  const weights = [
+    [32, 18, 24, 8],
+    [58, 36, 42, 29],
+    [76, 61, 65, 71],
+    [94, 88, 78, 93],
+  ][stage];
+
+  return (
+    <div className="mt-6 border border-amber/25 bg-obsidian-soft/45 p-4">
+      <div className="mb-4 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.3em] text-muted-foreground">
+        <span>// reward parameters</span>
+        <span className="text-amber">curiosity online</span>
+      </div>
+      <div className="space-y-3">
+        {REWARD_PARAMS.map(([k, v, note], i) => (
+          <div key={k}>
+            <div className="mb-1.5 flex items-center justify-between gap-3 font-mono text-[9px] uppercase tracking-[0.2em]">
+              <span className="text-muted-foreground">{k}</span>
+              <span className={i === 0 ? "text-amber" : "text-cyan"}>{v}</span>
+            </div>
+            <div className="h-1 bg-border/40">
+              <motion.div
+                className={i === 0 ? "h-full bg-amber" : "h-full bg-cyan"}
+                animate={{ width: `${weights[i]}%` }}
+                transition={{ duration: 0.8, delay: i * 0.06 }}
+              />
+            </div>
+            <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground/70">{note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -211,6 +347,15 @@ const SimChamber = ({ stage }: { stage: number }) => {
   const y2 = y1 + Math.sin(a1 + a2) * L;
   const x3 = x2 + Math.cos(a1 + a2 + a3) * L * 0.7;
   const y3 = y2 + Math.sin(a1 + a2 + a3) * L * 0.7;
+  const chaosSparks = useMemo(
+    () => Array.from({ length: 12 }).map((_, i) => ({
+      x: cx + (Math.sin(i * 11.7) * 0.5 + 0.5 - 0.5) * 120,
+      y: cy + (Math.cos(i * 7.3) * 0.5 + 0.5 - 0.5) * 120,
+      r: 0.6 + (i % 4) * 0.35,
+      opacity: 0.25 + (i % 5) * 0.11,
+    })),
+    [cx, cy],
+  );
 
   return (
     <div className="relative aspect-square w-full max-w-xl mx-auto">
@@ -242,6 +387,20 @@ const SimChamber = ({ stage }: { stage: number }) => {
         {/* horizon / floor */}
         <ellipse cx="200" cy="320" rx="160" ry="14" fill="url(#floor)" />
         <line x1="40" y1="320" x2="360" y2="320" stroke="hsl(186 100% 50% / 0.25)" strokeDasharray="2 6" />
+
+        {/* Parallel test pods */}
+        {([
+          [80, 90, "FALL"], [318, 104, "CUP"], [78, 304, "GRIP"], [320, 310, "CLOTH"],
+        ] as const).map(([px, py, label], i) => {
+          const active = stage * 1.3 + 1 > i;
+          return (
+            <g key={label} opacity={active ? 0.9 : 0.25}>
+              <rect x={Number(px) - 28} y={Number(py) - 14} width="56" height="28" fill="hsl(0 0% 2% / 0.72)" stroke={active ? "hsl(45 100% 50% / 0.65)" : "hsl(186 100% 50% / 0.25)"} strokeWidth="0.7" />
+              <text x={Number(px)} y={Number(py) + 3} textAnchor="middle" fill={active ? "hsl(45 100% 50%)" : "hsl(186 100% 50% / 0.7)"} fontSize="8" fontFamily="JetBrains Mono">{label}</text>
+              <line x1={Number(px)} y1={Number(py) + (Number(py) < cy ? 14 : -14)} x2={cx} y2={cy} stroke="hsl(186 100% 50% / 0.18)" strokeDasharray="2 4" />
+            </g>
+          );
+        })}
 
         {/* World model rings - appear at stage 2+ */}
         {[40, 70, 100, 130].map((r, i) => (
@@ -311,16 +470,26 @@ const SimChamber = ({ stage }: { stage: number }) => {
         )}
 
         {/* Stage 0 — chaos sparks */}
-        {stage === 0 && Array.from({ length: 12 }).map((_, i) => (
+        {stage === 0 && chaosSparks.map((spark, i) => (
           <circle
             key={i}
-            cx={cx + (Math.random() - 0.5) * 120}
-            cy={cy + (Math.random() - 0.5) * 120}
-            r={Math.random() * 1.5 + 0.5}
+            cx={spark.x}
+            cy={spark.y}
+            r={spark.r}
             fill="hsl(45 100% 50%)"
-            opacity={Math.random() * 0.7}
+            opacity={spark.opacity}
           />
         ))}
+
+        {/* Cup and water lesson — becomes legible as common sense forms */}
+        <g opacity={stage >= 1 ? 0.9 : 0.28} transform={stage < 3 ? "rotate(-16 306 220)" : "rotate(0 306 220)"}>
+          <path d="M286 196 L326 196 L320 250 L292 250 Z" fill="none" stroke="hsl(186 100% 50% / 0.7)" strokeWidth="1" />
+          <path d="M292 218 Q306 210 320 218 L317 242 L295 242 Z" fill="hsl(186 100% 50% / 0.18)" stroke="hsl(186 100% 50% / 0.35)" strokeWidth="0.7" />
+          {stage < 3 && [0, 1, 2, 3].map((i) => (
+            <circle key={i} cx={326 + i * 5} cy={222 + i * 12} r="1.8" fill="hsl(186 100% 50%)" opacity="0.75" />
+          ))}
+          <text x="260" y="270" fill="hsl(45 100% 50% / 0.78)" fontSize="8" fontFamily="JetBrains Mono">SPILL_MODEL</text>
+        </g>
 
         {/* Stage 1 — exploration trails */}
         {stage === 1 && Array.from({ length: 8 }).map((_, i) => {
@@ -384,7 +553,7 @@ export const Chapter = ({
   italic: string;
   body: string;
   metrics: [string, string][];
-  visual: React.ReactNode;
+  visual: ReactNode;
   reverse?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);

@@ -340,6 +340,15 @@ const SimChamber = ({ stage }: { stage: number }) => {
   const y2 = y1 + Math.sin(a1 + a2) * L;
   const x3 = x2 + Math.cos(a1 + a2 + a3) * L * 0.7;
   const y3 = y2 + Math.sin(a1 + a2 + a3) * L * 0.7;
+  const chaosSparks = useMemo(
+    () => Array.from({ length: 12 }).map((_, i) => ({
+      x: cx + (Math.sin(i * 11.7) * 0.5 + 0.5 - 0.5) * 120,
+      y: cy + (Math.cos(i * 7.3) * 0.5 + 0.5 - 0.5) * 120,
+      r: 0.6 + (i % 4) * 0.35,
+      opacity: 0.25 + (i % 5) * 0.11,
+    })),
+    [cx, cy],
+  );
 
   return (
     <div className="relative aspect-square w-full max-w-xl mx-auto">
@@ -371,6 +380,20 @@ const SimChamber = ({ stage }: { stage: number }) => {
         {/* horizon / floor */}
         <ellipse cx="200" cy="320" rx="160" ry="14" fill="url(#floor)" />
         <line x1="40" y1="320" x2="360" y2="320" stroke="hsl(186 100% 50% / 0.25)" strokeDasharray="2 6" />
+
+        {/* Parallel test pods */}
+        {[
+          [80, 90, "FALL"], [318, 104, "CUP"], [78, 304, "GRIP"], [320, 310, "CLOTH"],
+        ].map(([px, py, label], i) => {
+          const active = stage * 1.3 + 1 > i;
+          return (
+            <g key={String(label)} opacity={active ? 0.9 : 0.25}>
+              <rect x={Number(px) - 28} y={Number(py) - 14} width="56" height="28" fill="hsl(0 0% 2% / 0.72)" stroke={active ? "hsl(45 100% 50% / 0.65)" : "hsl(186 100% 50% / 0.25)"} strokeWidth="0.7" />
+              <text x={Number(px)} y={Number(py) + 3} textAnchor="middle" fill={active ? "hsl(45 100% 50%)" : "hsl(186 100% 50% / 0.7)"} fontSize="8" fontFamily="JetBrains Mono">{String(label)}</text>
+              <line x1={Number(px)} y1={Number(py) + (Number(py) < cy ? 14 : -14)} x2={cx} y2={cy} stroke="hsl(186 100% 50% / 0.18)" strokeDasharray="2 4" />
+            </g>
+          );
+        })}
 
         {/* World model rings - appear at stage 2+ */}
         {[40, 70, 100, 130].map((r, i) => (
@@ -440,16 +463,26 @@ const SimChamber = ({ stage }: { stage: number }) => {
         )}
 
         {/* Stage 0 — chaos sparks */}
-        {stage === 0 && Array.from({ length: 12 }).map((_, i) => (
+        {stage === 0 && chaosSparks.map((spark, i) => (
           <circle
             key={i}
-            cx={cx + (Math.random() - 0.5) * 120}
-            cy={cy + (Math.random() - 0.5) * 120}
-            r={Math.random() * 1.5 + 0.5}
+            cx={spark.x}
+            cy={spark.y}
+            r={spark.r}
             fill="hsl(45 100% 50%)"
-            opacity={Math.random() * 0.7}
+            opacity={spark.opacity}
           />
         ))}
+
+        {/* Cup and water lesson — becomes legible as common sense forms */}
+        <g opacity={stage >= 1 ? 0.9 : 0.28} transform={stage < 3 ? "rotate(-16 306 220)" : "rotate(0 306 220)"}>
+          <path d="M286 196 L326 196 L320 250 L292 250 Z" fill="none" stroke="hsl(186 100% 50% / 0.7)" strokeWidth="1" />
+          <path d="M292 218 Q306 210 320 218 L317 242 L295 242 Z" fill="hsl(186 100% 50% / 0.18)" stroke="hsl(186 100% 50% / 0.35)" strokeWidth="0.7" />
+          {stage < 3 && [0, 1, 2, 3].map((i) => (
+            <circle key={i} cx={326 + i * 5} cy={222 + i * 12} r="1.8" fill="hsl(186 100% 50%)" opacity="0.75" />
+          ))}
+          <text x="260" y="270" fill="hsl(45 100% 50% / 0.78)" fontSize="8" fontFamily="JetBrains Mono">SPILL_MODEL</text>
+        </g>
 
         {/* Stage 1 — exploration trails */}
         {stage === 1 && Array.from({ length: 8 }).map((_, i) => {

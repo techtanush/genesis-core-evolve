@@ -4,6 +4,7 @@ import chipImg from "@/assets/genesis-core-chip.png";
 import robot1 from "@/assets/robot-organic-1.jpg";
 import robot2 from "@/assets/robot-organic-2.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
+import logo from "@/assets/roboscale-logo.png";
 import { GlowCursor, ScrambleText, Reveal } from "@/components/Effects";
 import { WireframeChip } from "@/components/TechDiagrams";
 import { VibeTerminal } from "@/components/VibeTerminal";

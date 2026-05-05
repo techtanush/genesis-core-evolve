@@ -184,6 +184,10 @@ const Index = () => {
               <div className="corner-frame relative border border-cyan/40 p-3 bg-obsidian-soft/50 backdrop-blur-xl">
                 <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
                 <div className="absolute inset-0 -z-10 blur-3xl opacity-60" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.25), hsl(186 100% 50% / 0.15) 40%, transparent 70%)" }} />
+                {/* Leaked stamp */}
+                <div className="absolute top-6 right-6 z-20 -rotate-[8deg] border-2 border-amber/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.35em] text-amber/90 bg-obsidian/40 backdrop-blur-sm">
+                  ◆ Leaked · 2036.04.18 · T-3
+                </div>
                 <div className="scan-line relative">
                   <img src={chipImg} alt="Roboscale Genesis Core neuromorphic processor blueprint" width={1920} height={1080} className="w-full block" />
                 </div>

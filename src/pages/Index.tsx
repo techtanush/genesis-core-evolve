@@ -72,8 +72,24 @@ const Index = () => {
       <WaitlistModal open={open} onOpenChange={setOpen} />
       <FloatingAccess onOpen={() => setOpen(true)} />
 
+      {/* LEAK BAR */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-amber text-obsidian overflow-hidden border-b border-amber-glow/40">
+        <div className="flex whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.4em] py-1.5 animate-[data-stream_40s_linear_infinite] [animation-direction:reverse]">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span key={i} className="px-6 flex items-center gap-6">
+              <span className="font-bold">◆ LEAKED FROM 2036</span>
+              <span>· Internal Mirror · Roboscale.Labs ·</span>
+              <span>· Clearance T-3 ·</span>
+              <span>· Document Class // GENESIS_CORE ·</span>
+              <span>· Do Not Distribute ·</span>
+              <span className="font-bold">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* NAV */}
-      <header className="fixed top-0 left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
+      <header className="fixed top-[26px] left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
             <div className="h-6 w-6 border border-amber rotate-45 relative">

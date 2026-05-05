@@ -120,7 +120,8 @@ const Index = () => {
           <Reveal>
             <div className="flex items-center justify-center gap-4 mb-8 font-mono text-[11px] uppercase tracking-[0.4em] text-cyan/80">
               <span className="h-px w-12 bg-cyan/40" />
-              <span>// Genesis Core · v1.0 · Sovereign Stack</span>
+              <span className="text-amber">◆ LEAKED FROM 2036</span>
+              <span className="text-muted-foreground/70">// Genesis Core · v1.0 · Sovereign Stack</span>
               <span className="h-px w-12 bg-cyan/40" />
             </div>
           </Reveal>

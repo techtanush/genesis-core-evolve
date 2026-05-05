@@ -4,6 +4,7 @@ import chipImg from "@/assets/genesis-core-chip.png";
 import robot1 from "@/assets/robot-organic-1.jpg";
 import robot2 from "@/assets/robot-organic-2.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
+import logo from "@/assets/roboscale-logo.png";
 import { GlowCursor, ScrambleText, Reveal } from "@/components/Effects";
 import { WireframeChip } from "@/components/TechDiagrams";
 import { VibeTerminal } from "@/components/VibeTerminal";
@@ -91,14 +92,9 @@ const Index = () => {
       {/* NAV */}
       <header className="fixed top-[26px] left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
         <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-3">
-            <div className="h-6 w-6 border border-amber rotate-45 relative">
-              <div className="absolute inset-1 bg-amber pulse-amber" />
-            </div>
-            <div className="font-mono text-sm tracking-[0.3em] uppercase">
-              Roboscale<span className="text-amber">.</span>Labs
-            </div>
-          </div>
+          <a href="#" className="flex items-center gap-3 group">
+            <img src={logo} alt="Roboscale Genesis Core" className="h-9 md:h-10 w-auto object-contain" />
+          </a>
           <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#manifest" className="hover:text-amber transition-colors">Manifest</a>
             <a href="#pillars" className="hover:text-amber transition-colors">Pillars</a>
@@ -481,11 +477,9 @@ const Index = () => {
       <footer className="border-t border-border/40 py-12">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <div className="h-5 w-5 border border-amber rotate-45 relative">
-              <div className="absolute inset-1 bg-amber" />
-            </div>
+            <img src={logo} alt="Roboscale" className="h-8 w-auto object-contain opacity-90" />
             <div className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              2036 Roboscale Labs · <span className="text-amber">Evolution is sovereign.</span>
+              2036 · <span className="text-amber">Evolution is sovereign.</span>
             </div>
           </div>
           <nav className="flex items-center gap-6 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">

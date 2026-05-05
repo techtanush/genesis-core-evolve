@@ -72,8 +72,24 @@ const Index = () => {
       <WaitlistModal open={open} onOpenChange={setOpen} />
       <FloatingAccess onOpen={() => setOpen(true)} />
 
+      {/* LEAK BAR */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-amber text-obsidian overflow-hidden border-b border-amber-glow/40">
+        <div className="flex whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.4em] py-1.5 animate-[data-stream_40s_linear_infinite] [animation-direction:reverse]">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span key={i} className="px-6 flex items-center gap-6">
+              <span className="font-bold">◆ LEAKED FROM 2036</span>
+              <span>· Internal Mirror · Roboscale.Labs ·</span>
+              <span>· Clearance T-3 ·</span>
+              <span>· Document Class // GENESIS_CORE ·</span>
+              <span>· Do Not Distribute ·</span>
+              <span className="font-bold">◆</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* NAV */}
-      <header className="fixed top-0 left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
+      <header className="fixed top-[26px] left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
             <div className="h-6 w-6 border border-amber rotate-45 relative">
@@ -96,7 +112,7 @@ const Index = () => {
       </header>
 
       {/* HERO */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-52 pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-50" />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 40% at 50% 30%, hsl(45 100% 50% / 0.12), transparent 70%)" }} />
 
@@ -104,7 +120,8 @@ const Index = () => {
           <Reveal>
             <div className="flex items-center justify-center gap-4 mb-8 font-mono text-[11px] uppercase tracking-[0.4em] text-cyan/80">
               <span className="h-px w-12 bg-cyan/40" />
-              <span>// Genesis Core · v1.0 · Sovereign Stack</span>
+              <span className="text-amber">◆ LEAKED FROM 2036</span>
+              <span className="text-muted-foreground/70">// Genesis Core · v1.0 · Sovereign Stack</span>
               <span className="h-px w-12 bg-cyan/40" />
             </div>
           </Reveal>
@@ -167,6 +184,10 @@ const Index = () => {
               <div className="corner-frame relative border border-cyan/40 p-3 bg-obsidian-soft/50 backdrop-blur-xl">
                 <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
                 <div className="absolute inset-0 -z-10 blur-3xl opacity-60" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.25), hsl(186 100% 50% / 0.15) 40%, transparent 70%)" }} />
+                {/* Leaked stamp */}
+                <div className="absolute top-6 right-6 z-20 -rotate-[8deg] border-2 border-amber/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.35em] text-amber/90 bg-obsidian/40 backdrop-blur-sm">
+                  ◆ Leaked · 2036.04.18 · T-3
+                </div>
                 <div className="scan-line relative">
                   <img src={chipImg} alt="Roboscale Genesis Core neuromorphic processor blueprint" width={1920} height={1080} className="w-full block" />
                 </div>

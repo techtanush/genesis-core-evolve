@@ -112,7 +112,7 @@ const Index = () => {
       </header>
 
       {/* HERO */}
-      <section className="relative pt-40 pb-24 overflow-hidden">
+      <section className="relative pt-52 pb-24 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-50" />
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 40% at 50% 30%, hsl(45 100% 50% / 0.12), transparent 70%)" }} />
 

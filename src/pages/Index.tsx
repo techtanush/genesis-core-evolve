@@ -92,14 +92,9 @@ const Index = () => {
       {/* NAV */}
       <header className="fixed top-[26px] left-0 right-0 z-40 border-b border-border/40 bg-obsidian/60 backdrop-blur-xl">
         <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-3">
-            <div className="h-6 w-6 border border-amber rotate-45 relative">
-              <div className="absolute inset-1 bg-amber pulse-amber" />
-            </div>
-            <div className="font-mono text-sm tracking-[0.3em] uppercase">
-              Roboscale<span className="text-amber">.</span>Labs
-            </div>
-          </div>
+          <a href="#" className="flex items-center gap-3 group">
+            <img src={logo} alt="Roboscale Genesis Core" className="h-9 md:h-10 w-auto object-contain" />
+          </a>
           <nav className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-[0.25em] text-muted-foreground">
             <a href="#manifest" className="hover:text-amber transition-colors">Manifest</a>
             <a href="#pillars" className="hover:text-amber transition-colors">Pillars</a>

@@ -60,9 +60,10 @@ export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenCha
               </div>
               <button
                 type="submit"
-                className="w-full bg-amber text-obsidian font-mono text-sm font-semibold uppercase tracking-[0.2em] py-3 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.7)] transition-all"
+                disabled={loading}
+                className="w-full bg-amber text-obsidian font-mono text-sm font-semibold uppercase tracking-[0.2em] py-3 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.7)] transition-all disabled:opacity-50"
               >
-                Initialize_Handshake →
+                {loading ? "Transmitting…" : "Initialize_Handshake →"}
               </button>
             </form>
           ) : (

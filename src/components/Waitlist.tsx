@@ -1,15 +1,32 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) => {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       toast.error("Invalid signature. Provide a valid identifier.");
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("waitlist_signups").insert({
+      email: email.trim().toLowerCase(),
+      user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+      referrer: typeof document !== "undefined" ? document.referrer || null : null,
+    });
+    setLoading(false);
+    if (error) {
+      if ((error as any).code === "23505") {
+        toast.error("Identifier already registered in cohort.");
+      } else {
+        toast.error("Transmission failed. Retry handshake.");
+      }
       return;
     }
     setSent(true);
@@ -43,9 +60,10 @@ export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenCha
               </div>
               <button
                 type="submit"
-                className="w-full bg-amber text-obsidian font-mono text-sm font-semibold uppercase tracking-[0.2em] py-3 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.7)] transition-all"
+                disabled={loading}
+                className="w-full bg-amber text-obsidian font-mono text-sm font-semibold uppercase tracking-[0.2em] py-3 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.7)] transition-all disabled:opacity-50"
               >
-                Initialize_Handshake →
+                {loading ? "Transmitting…" : "Initialize_Handshake →"}
               </button>
             </form>
           ) : (

@@ -250,32 +250,40 @@ const Index = () => {
       <section className="relative py-20 border-b border-border/30 bg-obsidian-soft/20">
         <div className="container">
           <Reveal>
-            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.4em] text-cyan/80 mb-10">
+            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.4em] text-cyan/80 mb-4">
               <span className="h-px flex-1 bg-border/60" />
-              <span>// Genesis Core · Telemetry Snapshot · 2036.04.18</span>
+              <span>// State of Robotics · 2025 · Why the Cradle Exists</span>
               <span className="h-px flex-1 bg-border/60" />
             </div>
+            <p className="font-mono text-xs text-muted-foreground/80 mb-10 max-w-3xl">
+              Today's robots are brittle, expensive, and data-starved. Every number below is from the present — the gap we are closing.
+            </p>
           </Reveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border/40">
             {[
-              ["1.04M", "parallel cradle worlds", "running in lockstep"],
-              ["7,402", "morphogenetic CAD patches", "auto-emitted to date"],
-              ["1.8 ms", "self-chip reflex latency", "edge-local, no cloud"],
-              ["G_47", "current organism generation", "subject_07 lineage"],
-              ["99.4%", "vibe → kinematic fidelity", "intent compile rate"],
-              ["2,847", "operators in queue", "alpha cohort 2036"],
+              ["~50%", "real-world task success", "for SOTA vision-language-action models on novel objects (RT-2, 2024)"],
+              ["10,000×", "less robot data than text", "available to train embodied models vs. LLM corpora"],
+              ["30–60%", "sim-to-real performance drop", "when policies move from simulator to physical hardware"],
+              ["100–300 ms", "cloud round-trip latency", "vs. <10 ms required for stable bipedal reflexes"],
+              ["$74.5k", "price of one Spot robot", "Boston Dynamics, 2024 — before payload or software"],
+              ["2–5 hrs", "humanoid battery life", "current-gen Figure 02 / Optimus / H1 under load"],
             ].map(([n, label, sub], i) => (
-              <Reveal key={n} delay={i * 80}>
+              <Reveal key={n as string} delay={i * 80}>
                 <div className="bg-obsidian p-6 h-full">
-                  <div className={`text-4xl md:text-5xl tracking-tight mb-3 ${i % 2 === 0 ? "text-amber text-glow-amber" : "text-cyan text-glow-cyan"}`} style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}>
+                  <div className={`text-3xl md:text-4xl tracking-tight mb-3 ${i % 2 === 0 ? "text-amber text-glow-amber" : "text-cyan text-glow-cyan"}`} style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}>
                     {n}
                   </div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/80 mb-1">{label}</div>
-                  <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground/70">{sub}</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/80 mb-2">{label}</div>
+                  <div className="font-mono text-[9px] leading-relaxed tracking-[0.15em] text-muted-foreground/70">{sub}</div>
                 </div>
               </Reveal>
             ))}
           </div>
+          <Reveal>
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 mt-6 text-right">
+              sources: IFR World Robotics 2024 · Google DeepMind RT-2 · Boston Dynamics · Figure AI specsheet
+            </div>
+          </Reveal>
         </div>
       </section>
 

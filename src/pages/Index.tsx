@@ -437,20 +437,37 @@ const Index = () => {
         <Chapter
           num="03"
           tag="SOVEREIGN SELF-CHIP"
-          eyebrow="The reflexive REPL core"
+          eyebrow="Our winning silicon for the next generation"
           title="A mind that thinks"
           italic="at the speed of reflex."
-          body="Cloud latency is fatal in the physical world. The Sovereign Self-Chip is a custom neuromorphic substrate — a Mental REPL that runs counterfactual simulations locally. The agent imagines two seconds into the future, adjusts a motor policy mid-stride, and never asks the cloud for permission. Sovereignty is the latency budget."
-          metrics={[["LATENCY", "1.8s"], ["TDP", "150W"], ["SYNAPSES", "1.02T/mm²"]]}
+          body="Cloud round-trips cost 100–300 ms — fatal when a foot is mid-air. The Genesis Core is our answer: a custom 3nm-class neuromorphic die, co-designed with the Cradle, that runs a local Mental REPL. The agent imagines two seconds into the future, patches its own motor policy mid-stride, and never asks the cloud for permission. One chip per organism. No teleop, no leaks, no latency tax."
+          metrics={[["REFLEX", "1.8 ms"], ["TDP", "150W"], ["BANDWIDTH", "71.2 TB/s"]]}
           visual={
-            <div className="relative corner-frame border border-amber/40 bg-obsidian-soft/60 aspect-square overflow-hidden">
-              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-              <div className="absolute inset-0 grid-bg-fine opacity-40" />
-              <div className="absolute inset-0 flex items-center justify-center p-10">
-                <WireframeChip />
+            <div className="relative">
+              <div className="corner-frame relative border border-amber/40 p-3 bg-obsidian-soft/60 backdrop-blur-xl overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <div className="absolute inset-0 -z-10 blur-3xl opacity-60" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.25), hsl(186 100% 50% / 0.15) 40%, transparent 70%)" }} />
+                <div className="absolute top-4 right-4 z-20 -rotate-[6deg] border-2 border-amber/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.35em] text-amber/90 bg-obsidian/40 backdrop-blur-sm">
+                  ◆ Genesis Core · Rev 1.0
+                </div>
+                <div className="scan-line relative">
+                  <img src={chipImg} alt="Roboscale Genesis Core neuromorphic processor" width={1920} height={1080} className="w-full block" />
+                </div>
               </div>
-              <div className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80">◇ self_chip.die · 3nm class</div>
-              <div className="absolute bottom-3 right-3 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan pulse-cyan">● REPL ACTIVE</div>
+              <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+                {[["NODE", "3nm CLASS"], ["DIE STACK", "4-TIER 3D"], ["SYNAPSES", "1.02T/mm²"], ["POWER", "150W"]].map(([k, v]) => (
+                  <div key={k} className="border border-border/60 bg-obsidian-soft/60 p-3 flex justify-between">
+                    <span className="text-muted-foreground">{k}</span>
+                    <span className="text-amber">{v}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="absolute -top-6 left-0 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan/70 hidden md:block">
+                ◇ self_chip.die · in-house tape-out
+              </div>
+              <div className="absolute -top-6 right-0 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80 hidden md:block">
+                Mental REPL ●
+              </div>
             </div>
           }
         />

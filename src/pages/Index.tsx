@@ -437,11 +437,11 @@ const Index = () => {
         <Chapter
           num="03"
           tag="SOVEREIGN SELF-CHIP"
-          eyebrow="Our winning silicon for the next generation"
-          title="A mind that thinks"
-          italic="at the speed of reflex."
-          body="Cloud round-trips cost 100–300 ms — fatal when a foot is mid-air. The Genesis Core is our answer: a custom 3nm-class neuromorphic die, co-designed with the Cradle, that runs a local Mental REPL. The agent imagines two seconds into the future, patches its own motor policy mid-stride, and never asks the cloud for permission. One chip per organism. No teleop, no leaks, no latency tax."
-          metrics={[["REFLEX", "1.8 ms"], ["TDP", "150W"], ["BANDWIDTH", "71.2 TB/s"]]}
+          eyebrow="Our winning silicon · closes the sim-to-real gap, on-device"
+          title="The robot rehearses"
+          italic="before it moves."
+          body="Today's robots fail because what they learned in simulation breaks in the real world — the sim-to-real gap. The Genesis Core fixes this on the robot itself. It scans the environment, runs the next two seconds through a tiny in-head copy of the Cradle, picks the best motion, and only then moves. No Wi-Fi, no servers, no data leaving the body — just a few watts of local silicon. Energy-efficient, private, and fast enough that the robot adapts mid-step."
+          metrics={[["ON-DEVICE", "100%"], ["REFLEX", "1.8 ms"], ["POWER", "~15W active"]]}
           visual={
             <div className="relative">
               <div className="corner-frame relative border border-amber/40 p-3 bg-obsidian-soft/60 backdrop-blur-xl overflow-hidden">

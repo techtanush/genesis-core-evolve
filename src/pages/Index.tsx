@@ -587,33 +587,72 @@ const Index = () => {
           <Reveal>
             <div className="grid md:grid-cols-2 gap-12 items-end mb-12 pb-8 border-b border-border/30">
               <div>
-                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// Operators · Cohort 2036</div>
+                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// Operators · Founding Team</div>
                 <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02]" style={{ fontFamily: "'Instrument Serif', serif" }}>
                   The hands behind <span className="italic text-amber">the organism</span>.
                 </h2>
               </div>
               <p className="text-base text-muted-foreground leading-relaxed">
-                A small, sovereign team — simulation engineers, neuromorphic chip designers, and morphogenetic researchers — building the only stack where software, body, and silicon evolve together.
+                Two operators building the only stack where simulation, body, and silicon evolve together — from the Cradle, through the Debugger, into the Sovereign Self-Chip.
               </p>
             </div>
           </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          <div className="space-y-px bg-border/40">
             {[
-              [team1, "K. Aravind", "Simulation Lead", "amber"],
-              [team2, "M. Chen", "Self-Chip Architect", "cyan"],
-              [team3, "J. Voss", "Morphogenetic CAD", "amber"],
-              [team4, "S. Park", "Neuromorphic Design", "cyan"],
-            ].map(([img, name, role, c], i) => (
-              <Reveal key={name as string} delay={i * 100}>
-                <div className="group relative corner-frame border border-border/60 overflow-hidden bg-obsidian-soft/40 hover:border-amber/50 transition-colors">
-                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                  <div className="aspect-square overflow-hidden">
-                    <img src={img as string} alt={name as string} className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" loading="lazy" />
+              {
+                img: founderTanush,
+                name: "Tanush Chokshi",
+                role: "Founder & CEO · Roboscale",
+                email: "tanush.chokshi1@gmail.com",
+                linkedin: "Tanush Chokshi",
+                accent: "amber",
+              },
+              {
+                img: founderAaryan,
+                name: "Aaryan Vishnupurikar",
+                role: "Co-Founder & CTO · Roboscale",
+                email: "aaryan.vishnupurikar@gmail.com",
+                linkedin: "Aaryan Vishnupurikar",
+                accent: "cyan",
+              },
+            ].map((p, i) => (
+              <Reveal key={p.name} delay={i * 120}>
+                <div className="group relative bg-obsidian-soft/40 hover:bg-obsidian-soft/70 transition-colors">
+                  <div className="grid grid-cols-12 items-center gap-6 px-6 md:px-10 py-6">
+                    {/* portrait */}
+                    <div className="col-span-2 md:col-span-1 flex justify-start">
+                      <div className={`relative h-16 w-16 md:h-20 md:w-20 rounded-full overflow-hidden border ${p.accent === "amber" ? "border-amber/60" : "border-cyan/60"}`}>
+                        <img src={p.img} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+                        <span className={`absolute inset-0 rounded-full ring-1 ring-inset ${p.accent === "amber" ? "ring-amber/40" : "ring-cyan/40"}`} />
+                      </div>
+                    </div>
+
+                    {/* name + role */}
+                    <div className="col-span-10 md:col-span-6">
+                      <div className="text-2xl md:text-3xl tracking-tight" style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}>
+                        {p.name}
+                      </div>
+                      <div className={`mt-1 font-mono text-[10px] md:text-[11px] uppercase tracking-[0.35em] ${p.accent === "amber" ? "text-amber" : "text-cyan"}`}>
+                        {p.role}
+                      </div>
+                    </div>
+
+                    {/* contact */}
+                    <div className="col-span-12 md:col-span-5 md:text-right space-y-1.5 font-mono text-xs">
+                      <div className="flex md:justify-end items-center gap-3">
+                        <span className="text-muted-foreground/60 uppercase tracking-[0.3em] text-[10px]">Email</span>
+                        <a href={`mailto:${p.email}`} className="text-foreground/90 hover:text-amber transition-colors break-all">
+                          {p.email}
+                        </a>
+                      </div>
+                      <div className="flex md:justify-end items-center gap-3">
+                        <span className="text-muted-foreground/60 uppercase tracking-[0.3em] text-[10px]">LinkedIn</span>
+                        <span className="text-foreground/90">{p.linkedin}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-obsidian via-obsidian/80 to-transparent">
-                    <div className={`font-mono text-[10px] uppercase tracking-[0.3em] mb-1 ${c === "amber" ? "text-amber" : "text-cyan"}`}>{role as string}</div>
-                    <div className="font-light text-xl" style={{ fontFamily: "'Instrument Serif', serif" }}>{name as string}</div>
-                  </div>
+                  <span className={`absolute left-0 top-0 bottom-0 w-px ${p.accent === "amber" ? "bg-amber/40" : "bg-cyan/40"}`} />
                 </div>
               </Reveal>
             ))}

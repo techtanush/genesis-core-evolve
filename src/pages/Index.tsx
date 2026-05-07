@@ -5,6 +5,14 @@ import robot1 from "@/assets/robot-organic-1.jpg";
 import robot2 from "@/assets/robot-organic-2.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
 import logo from "@/assets/roboscale-logo.png";
+import cradleGrasp from "@/assets/cradle-grasp.jpg";
+import parallelWorlds from "@/assets/parallel-worlds.jpg";
+import tendonMacro from "@/assets/tendon-macro.jpg";
+import labWide from "@/assets/lab-wide.jpg";
+import team1 from "@/assets/team-1.jpg";
+import team2 from "@/assets/team-2.jpg";
+import team3 from "@/assets/team-3.jpg";
+import team4 from "@/assets/team-4.jpg";
 import { GlowCursor, ScrambleText, Reveal } from "@/components/Effects";
 import { WireframeChip } from "@/components/TechDiagrams";
 import { VibeTerminal } from "@/components/VibeTerminal";
@@ -313,6 +321,22 @@ const Index = () => {
             </div>
           </div>
 
+          {/* Cradle hero image */}
+          <Reveal>
+            <div className="relative mt-10 corner-frame border border-cyan/30 overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <div className="scan-line">
+                <img src={cradleGrasp} alt="Robot hand catching a glass cup inside the Cradle simulation" width={1280} height={896} loading="lazy" className="w-full block" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-obsidian/70 via-transparent to-obsidian/40" />
+              <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ trial_4421 · grasp_recovery · success_after_312_failures</div>
+              <div className="absolute bottom-4 right-4 font-mono text-[10px] uppercase tracking-[0.3em] text-amber pulse-amber">● learning</div>
+              <div className="absolute bottom-4 left-4 max-w-md font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/80">
+                law learned · "glass deforms light · weight ≠ mass · grip threshold 4.2N"
+              </div>
+            </div>
+          </Reveal>
+
           <div className="grid lg:grid-cols-12 gap-10 pt-10 md:pt-14 items-end">
             <div className="lg:col-span-7">
               <h2
@@ -341,6 +365,26 @@ const Index = () => {
           </div>
         </div>
         <CradleTraining />
+
+        {/* Parallel worlds full-bleed visual */}
+        <div className="container pb-20">
+          <Reveal>
+            <div className="relative corner-frame border border-amber/40 overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <img src={parallelWorlds} alt="One million parallel cradle simulations running in lockstep" width={1600} height={896} loading="lazy" className="w-full block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan mb-2">◇ render · cradle.cluster · 1,048,576 instances</div>
+                  <h3 className="text-2xl md:text-4xl tracking-tight max-w-2xl leading-[1.05]" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                    Every dropped cup teaches a million bodies <span className="italic text-amber">at once</span>.
+                  </h3>
+                </div>
+                <div className="hidden md:block font-mono text-[10px] uppercase tracking-[0.3em] text-amber pulse-amber">● LIVE</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
 
       {/* CHAPTER 02 — MORPHOGENETIC DEBUGGER */}
@@ -451,7 +495,91 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* DOSSIER · LAB INTERIOR */}
+      <section className="relative py-24 border-y border-border/30 bg-obsidian-soft/30">
+        <div className="container grid lg:grid-cols-12 gap-10 items-center">
+          <Reveal>
+            <div className="lg:col-span-5">
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">// Dossier · Lab_03 · Interior Capture</div>
+              <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02] mb-6" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                Inside the room where bodies are <span className="italic text-cyan">grown</span>.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Three converging fronts — generative simulation, morphogenetic CAD, neuromorphic silicon — share a single floor. The Cradle hums in the rack. The Debugger prints a new clavicle. The Self-Chip dreams a future and patches a stride before the foot lands.
+              </p>
+              <div className="grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+                {[["floor", "Lab_03"],["uptime", "411 d"],["organisms", "47 active"]].map(([k,v])=>(
+                  <div key={k} className="border border-border/60 bg-obsidian/60 p-3">
+                    <div className="text-muted-foreground">{k}</div>
+                    <div className="text-amber mt-1">{v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="lg:col-span-7 grid grid-cols-3 grid-rows-2 gap-3 h-[520px]">
+              <div className="col-span-2 row-span-2 corner-frame relative border border-cyan/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={labWide} alt="Holographic robot blueprint inside Lab_03" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-2 left-2 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ wide_capture</div>
+              </div>
+              <div className="corner-frame relative border border-amber/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={tendonMacro} alt="Tendon macro" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">tendon_07</div>
+              </div>
+              <div className="corner-frame relative border border-cyan/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={robotLimb} alt="Limb prototype" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-cyan">limb_G47</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="py-24 relative">
+        <div className="container">
+          <Reveal>
+            <div className="grid md:grid-cols-2 gap-12 items-end mb-12 pb-8 border-b border-border/30">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// Operators · Cohort 2036</div>
+                <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02]" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                  The hands behind <span className="italic text-amber">the organism</span>.
+                </h2>
+              </div>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                A small, sovereign team — simulation engineers, neuromorphic chip designers, and morphogenetic researchers — building the only stack where software, body, and silicon evolve together.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              [team1, "K. Aravind", "Simulation Lead", "amber"],
+              [team2, "M. Chen", "Self-Chip Architect", "cyan"],
+              [team3, "J. Voss", "Morphogenetic CAD", "amber"],
+              [team4, "S. Park", "Neuromorphic Design", "cyan"],
+            ].map(([img, name, role, c], i) => (
+              <Reveal key={name as string} delay={i * 100}>
+                <div className="group relative corner-frame border border-border/60 overflow-hidden bg-obsidian-soft/40 hover:border-amber/50 transition-colors">
+                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                  <div className="aspect-square overflow-hidden">
+                    <img src={img as string} alt={name as string} className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" loading="lazy" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-obsidian via-obsidian/80 to-transparent">
+                    <div className={`font-mono text-[10px] uppercase tracking-[0.3em] mb-1 ${c === "amber" ? "text-amber" : "text-cyan"}`}>{role as string}</div>
+                    <div className="font-light text-xl" style={{ fontFamily: "'Instrument Serif', serif" }}>{name as string}</div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.15), transparent 60%)" }} />
         <div className="container relative z-10 text-center">

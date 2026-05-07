@@ -321,6 +321,22 @@ const Index = () => {
             </div>
           </div>
 
+          {/* Cradle hero image */}
+          <Reveal>
+            <div className="relative mt-10 corner-frame border border-cyan/30 overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <div className="scan-line">
+                <img src={cradleGrasp} alt="Robot hand catching a glass cup inside the Cradle simulation" width={1280} height={896} loading="lazy" className="w-full block" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-obsidian/70 via-transparent to-obsidian/40" />
+              <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ trial_4421 · grasp_recovery · success_after_312_failures</div>
+              <div className="absolute bottom-4 right-4 font-mono text-[10px] uppercase tracking-[0.3em] text-amber pulse-amber">● learning</div>
+              <div className="absolute bottom-4 left-4 max-w-md font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/80">
+                law learned · "glass deforms light · weight ≠ mass · grip threshold 4.2N"
+              </div>
+            </div>
+          </Reveal>
+
           <div className="grid lg:grid-cols-12 gap-10 pt-10 md:pt-14 items-end">
             <div className="lg:col-span-7">
               <h2

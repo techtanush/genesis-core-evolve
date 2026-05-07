@@ -495,7 +495,91 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* DOSSIER · LAB INTERIOR */}
+      <section className="relative py-24 border-y border-border/30 bg-obsidian-soft/30">
+        <div className="container grid lg:grid-cols-12 gap-10 items-center">
+          <Reveal>
+            <div className="lg:col-span-5">
+              <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">// Dossier · Lab_03 · Interior Capture</div>
+              <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02] mb-6" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                Inside the room where bodies are <span className="italic text-cyan">grown</span>.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Three converging fronts — generative simulation, morphogenetic CAD, neuromorphic silicon — share a single floor. The Cradle hums in the rack. The Debugger prints a new clavicle. The Self-Chip dreams a future and patches a stride before the foot lands.
+              </p>
+              <div className="grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+                {[["floor", "Lab_03"],["uptime", "411 d"],["organisms", "47 active"]].map(([k,v])=>(
+                  <div key={k} className="border border-border/60 bg-obsidian/60 p-3">
+                    <div className="text-muted-foreground">{k}</div>
+                    <div className="text-amber mt-1">{v}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="lg:col-span-7 grid grid-cols-3 grid-rows-2 gap-3 h-[520px]">
+              <div className="col-span-2 row-span-2 corner-frame relative border border-cyan/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={labWide} alt="Holographic robot blueprint inside Lab_03" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-2 left-2 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ wide_capture</div>
+              </div>
+              <div className="corner-frame relative border border-amber/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={tendonMacro} alt="Tendon macro" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">tendon_07</div>
+              </div>
+              <div className="corner-frame relative border border-cyan/30 overflow-hidden">
+                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                <img src={robotLimb} alt="Limb prototype" className="w-full h-full object-cover" loading="lazy" />
+                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-cyan">limb_G47</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="py-24 relative">
+        <div className="container">
+          <Reveal>
+            <div className="grid md:grid-cols-2 gap-12 items-end mb-12 pb-8 border-b border-border/30">
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-4">// Operators · Cohort 2036</div>
+                <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02]" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                  The hands behind <span className="italic text-amber">the organism</span>.
+                </h2>
+              </div>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                A small, sovereign team — simulation engineers, neuromorphic chip designers, and morphogenetic researchers — building the only stack where software, body, and silicon evolve together.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              [team1, "K. Aravind", "Simulation Lead", "amber"],
+              [team2, "M. Chen", "Self-Chip Architect", "cyan"],
+              [team3, "J. Voss", "Morphogenetic CAD", "amber"],
+              [team4, "S. Park", "Neuromorphic Design", "cyan"],
+            ].map(([img, name, role, c], i) => (
+              <Reveal key={name as string} delay={i * 100}>
+                <div className="group relative corner-frame border border-border/60 overflow-hidden bg-obsidian-soft/40 hover:border-amber/50 transition-colors">
+                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                  <div className="aspect-square overflow-hidden">
+                    <img src={img as string} alt={name as string} className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105" loading="lazy" />
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-obsidian via-obsidian/80 to-transparent">
+                    <div className={`font-mono text-[10px] uppercase tracking-[0.3em] mb-1 ${c === "amber" ? "text-amber" : "text-cyan"}`}>{role as string}</div>
+                    <div className="font-light text-xl" style={{ fontFamily: "'Instrument Serif', serif" }}>{name as string}</div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.15), transparent 60%)" }} />
         <div className="container relative z-10 text-center">

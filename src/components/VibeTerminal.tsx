@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 const VIBES = [
-  { cmd: "deploy --vibe 'navigate warehouse, retrieve red crate, avoid humans'", out: ["[CRADLE] Compiling kinematic intents…", "[DEBUGGER] Morphology check: PASS", "[SELF-CHIP] REPL primed (latency: 1.8s)", "[OK] Behavior compiled → 4 motor policies"] },
-  { cmd: "deploy --vibe 'climb scaffolding, install panel, return to base'", out: ["[CRADLE] Active Inference: world model loaded", "[DEBUGGER] Torque bottleneck @ joint_07 → patching CAD", "[SELF-CHIP] Counterfactual sim: 2.0s OK", "[OK] Vessel evolved · 312 lines of motor code"] },
+  { cmd: "vibe 'pick up the red crate, walk around people, set it on the shelf'", out: ["[CAD] designing a body for this job…", "[CAD] 4-finger gripper · 1.7 m frame · ready", "[CRADLE] practicing 1,048,576 times in simulation", "[SELF-CHIP] policy compressed → 18 MB · runs on-device", "[OK] robot trained · ship to Self-Chip"] },
+  { cmd: "vibe 'climb the scaffolding and install a solar panel'", out: ["[CAD] auto-evolving limbs for grip + reach", "[CAD] tendon layout v3 · torque OK", "[CRADLE] sim-to-real rehearsals · 412k runs", "[SELF-CHIP] on-device, no cloud, ~15W", "[OK] behavior locked · 312 lines of motor code"] },
 ];
 
 export const VibeTerminal = () => {

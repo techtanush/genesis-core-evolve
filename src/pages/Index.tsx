@@ -437,11 +437,11 @@ const Index = () => {
         <Chapter
           num="03"
           tag="SOVEREIGN SELF-CHIP"
-          eyebrow="Our winning silicon for the next generation"
-          title="A mind that thinks"
-          italic="at the speed of reflex."
-          body="Cloud round-trips cost 100–300 ms — fatal when a foot is mid-air. The Genesis Core is our answer: a custom 3nm-class neuromorphic die, co-designed with the Cradle, that runs a local Mental REPL. The agent imagines two seconds into the future, patches its own motor policy mid-stride, and never asks the cloud for permission. One chip per organism. No teleop, no leaks, no latency tax."
-          metrics={[["REFLEX", "1.8 ms"], ["TDP", "150W"], ["BANDWIDTH", "71.2 TB/s"]]}
+          eyebrow="Our winning silicon · closes the sim-to-real gap, on-device"
+          title="The robot rehearses"
+          italic="before it moves."
+          body="Today's robots fail because what they learned in simulation breaks in the real world — the sim-to-real gap. The Genesis Core fixes this on the robot itself. It scans the environment, runs the next two seconds through a tiny in-head copy of the Cradle, picks the best motion, and only then moves. No Wi-Fi, no servers, no data leaving the body — just a few watts of local silicon. Energy-efficient, private, and fast enough that the robot adapts mid-step."
+          metrics={[["ON-DEVICE", "100%"], ["REFLEX", "1.8 ms"], ["POWER", "~15W active"]]}
           visual={
             <div className="relative">
               <div className="corner-frame relative border border-amber/40 p-3 bg-obsidian-soft/60 backdrop-blur-xl overflow-hidden">
@@ -455,7 +455,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
-                {[["NODE", "3nm CLASS"], ["DIE STACK", "4-TIER 3D"], ["SYNAPSES", "1.02T/mm²"], ["POWER", "150W"]].map(([k, v]) => (
+                {[["ENERGY", "~15W"], ["LATENCY", "1.8 ms"], ["DATA SENT", "0 bytes"], ["NODE", "3nm class"]].map(([k, v]) => (
                   <div key={k} className="border border-border/60 bg-obsidian-soft/60 p-3 flex justify-between">
                     <span className="text-muted-foreground">{k}</span>
                     <span className="text-amber">{v}</span>
@@ -463,10 +463,10 @@ const Index = () => {
                 ))}
               </div>
               <div className="absolute -top-6 left-0 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan/70 hidden md:block">
-                ◇ self_chip.die · in-house tape-out
+                ◇ scan → simulate → act · all on-chip
               </div>
               <div className="absolute -top-6 right-0 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80 hidden md:block">
-                Mental REPL ●
+                Closing the sim-to-real gap ●
               </div>
             </div>
           }
@@ -478,15 +478,35 @@ const Index = () => {
         <Chapter
           num="04"
           tag="VIBE-CODING"
-          eyebrow="Natural language kinematics"
+          eyebrow="Describe the job · get a trained robot"
           title="Type a vibe."
-          italic="Compile a behavior."
-          body="The abstraction between human intent and robotic execution — eliminated. Operators describe outcomes in plain language. Roboscale orchestrates the Cradle, the Debugger, and the Self-Chip to compile, simulate, and deploy. No SDK. No teleop. Just intent."
-          metrics={[["TOKENS/s", "2.4k"], ["COMPILE", "920ms"], ["FIDELITY", "99.4%"]]}
+          italic="Get a trained robot."
+          body="Stop writing motor code. You describe what you want in plain English — the 'vibe.' Roboscale auto-generates a body for it (CAD), drops that body into the Cradle to practice millions of times, and ships the trained policy to the Self-Chip. Vibe in, working robot out."
+          metrics={[["STEP 1", "Vibe"], ["STEP 2", "CAD"], ["STEP 3", "Cradle"]]}
           reverse
           visual={
-            <div id="vibe">
+            <div id="vibe" className="space-y-3">
               <VibeTerminal />
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { label: "01 · VIBE", sub: "plain-English intent", img: parallelWorlds, tint: "amber" },
+                  { label: "02 · CAD", sub: "body auto-designed", img: tendonMacro, tint: "cyan" },
+                  { label: "03 · CRADLE", sub: "trained in simulation", img: cradleGrasp, tint: "amber" },
+                ].map((s) => (
+                  <div key={s.label} className={`relative corner-frame border ${s.tint === "amber" ? "border-amber/40" : "border-cyan/40"} overflow-hidden aspect-[4/3]`}>
+                    <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                    <img src={s.img} alt={s.label} className="w-full h-full object-cover opacity-70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent" />
+                    <div className="absolute bottom-2 left-2 right-2">
+                      <div className={`font-mono text-[9px] uppercase tracking-[0.3em] ${s.tint === "amber" ? "text-amber" : "text-cyan"}`}>{s.label}</div>
+                      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground/80">{s.sub}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60 text-center">
+                vibe → CAD → cradle → self-chip · one pipeline
+              </div>
             </div>
           }
         />

@@ -369,7 +369,7 @@ const Index = () => {
             </div>
           </Reveal>
         </div>
-
+      </div>
 
       {/* CHAPTER 02 — MORPHOGENETIC DEBUGGER */}
       <div id="chapter-02">

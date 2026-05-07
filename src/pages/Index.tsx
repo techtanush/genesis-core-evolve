@@ -246,6 +246,39 @@ const Index = () => {
         </div>
       </section>
 
+      {/* KEY NUMBERS */}
+      <section className="relative py-20 border-b border-border/30 bg-obsidian-soft/20">
+        <div className="container">
+          <Reveal>
+            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.4em] text-cyan/80 mb-10">
+              <span className="h-px flex-1 bg-border/60" />
+              <span>// Genesis Core · Telemetry Snapshot · 2036.04.18</span>
+              <span className="h-px flex-1 bg-border/60" />
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-border/40">
+            {[
+              ["1.04M", "parallel cradle worlds", "running in lockstep"],
+              ["7,402", "morphogenetic CAD patches", "auto-emitted to date"],
+              ["1.8 ms", "self-chip reflex latency", "edge-local, no cloud"],
+              ["G_47", "current organism generation", "subject_07 lineage"],
+              ["99.4%", "vibe → kinematic fidelity", "intent compile rate"],
+              ["2,847", "operators in queue", "alpha cohort 2036"],
+            ].map(([n, label, sub], i) => (
+              <Reveal key={n} delay={i * 80}>
+                <div className="bg-obsidian p-6 h-full">
+                  <div className={`text-4xl md:text-5xl tracking-tight mb-3 ${i % 2 === 0 ? "text-amber text-glow-amber" : "text-cyan text-glow-cyan"}`} style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}>
+                    {n}
+                  </div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/80 mb-1">{label}</div>
+                  <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground/70">{sub}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CHAPTER INDEX */}
       <section className="py-24 relative">
         <div className="container">

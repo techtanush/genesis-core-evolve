@@ -349,7 +349,27 @@ const Index = () => {
           </div>
         </div>
         <CradleTraining />
-      </div>
+
+        {/* Parallel worlds full-bleed visual */}
+        <div className="container pb-20">
+          <Reveal>
+            <div className="relative corner-frame border border-amber/40 overflow-hidden">
+              <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+              <img src={parallelWorlds} alt="One million parallel cradle simulations running in lockstep" width={1600} height={896} loading="lazy" className="w-full block" />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-cyan mb-2">◇ render · cradle.cluster · 1,048,576 instances</div>
+                  <h3 className="text-2xl md:text-4xl tracking-tight max-w-2xl leading-[1.05]" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                    Every dropped cup teaches a million bodies <span className="italic text-amber">at once</span>.
+                  </h3>
+                </div>
+                <div className="hidden md:block font-mono text-[10px] uppercase tracking-[0.3em] text-amber pulse-amber">● LIVE</div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+
 
       {/* CHAPTER 02 — MORPHOGENETIC DEBUGGER */}
       <div id="chapter-02">

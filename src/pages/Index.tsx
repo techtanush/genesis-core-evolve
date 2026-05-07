@@ -540,44 +540,48 @@ const Index = () => {
       {/* DOSSIER · LAB INTERIOR */}
       <section className="relative py-24 border-y border-border/30 bg-obsidian-soft/30">
         <div className="container grid lg:grid-cols-12 gap-10 items-center">
-          <Reveal>
-            <div className="lg:col-span-5">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">// Dossier · Lab_03 · Interior Capture</div>
-              <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02] mb-6" style={{ fontFamily: "'Instrument Serif', serif" }}>
-                Inside the room where bodies are <span className="italic text-cyan">grown</span>.
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Three converging fronts — generative simulation, morphogenetic CAD, neuromorphic silicon — share a single floor. The Cradle hums in the rack. The Debugger prints a new clavicle. The Self-Chip dreams a future and patches a stride before the foot lands.
-              </p>
-              <div className="grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
-                {[["floor", "Lab_03"],["uptime", "411 d"],["organisms", "47 active"]].map(([k,v])=>(
-                  <div key={k} className="border border-border/60 bg-obsidian/60 p-3">
-                    <div className="text-muted-foreground">{k}</div>
-                    <div className="text-amber mt-1">{v}</div>
-                  </div>
-                ))}
+          <div className="lg:col-span-5">
+            <Reveal>
+              <div>
+                <div className="font-mono text-xs uppercase tracking-[0.3em] text-amber mb-6">// Dossier · Lab_03 · Interior Capture</div>
+                <h2 className="text-4xl md:text-6xl tracking-[-0.03em] leading-[1.02] mb-6" style={{ fontFamily: "'Instrument Serif', serif" }}>
+                  Inside the room where bodies are <span className="italic text-cyan">grown</span>.
+                </h2>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                  Three converging fronts — generative simulation, morphogenetic CAD, neuromorphic silicon — share a single floor. The Cradle hums in the rack. The Debugger prints a new clavicle. The Self-Chip dreams a future and patches a stride before the foot lands.
+                </p>
+                <div className="grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
+                  {[["floor", "Lab_03"],["uptime", "411 d"],["organisms", "47 active"]].map(([k,v])=>(
+                    <div key={k} className="border border-border/60 bg-obsidian/60 p-3">
+                      <div className="text-muted-foreground">{k}</div>
+                      <div className="text-amber mt-1">{v}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="lg:col-span-7 grid grid-cols-3 grid-rows-2 gap-3 h-[520px]">
-              <div className="col-span-2 row-span-2 corner-frame relative border border-cyan/30 overflow-hidden">
-                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <img src={labWide} alt="Holographic robot blueprint inside Lab_03" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute bottom-2 left-2 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ wide_capture</div>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7">
+            <Reveal delay={150}>
+              <div className="grid grid-cols-3 grid-rows-2 gap-3 h-[520px]">
+                <div className="col-span-2 row-span-2 corner-frame relative border border-cyan/30 overflow-hidden">
+                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                  <img src={labWide} alt="Holographic robot blueprint inside Lab_03" className="w-full h-full object-cover" loading="lazy" />
+                  <div className="absolute bottom-2 left-2 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan">◇ wide_capture</div>
+                </div>
+                <div className="corner-frame relative border border-amber/30 overflow-hidden">
+                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                  <img src={tendonMacro} alt="Tendon macro" className="w-full h-full object-cover" loading="lazy" />
+                  <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">tendon_07</div>
+                </div>
+                <div className="corner-frame relative border border-cyan/30 overflow-hidden">
+                  <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
+                  <img src={robotLimb} alt="Limb prototype" className="w-full h-full object-cover" loading="lazy" />
+                  <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-cyan">limb_G47</div>
+                </div>
               </div>
-              <div className="corner-frame relative border border-amber/30 overflow-hidden">
-                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <img src={tendonMacro} alt="Tendon macro" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-amber">tendon_07</div>
-              </div>
-              <div className="corner-frame relative border border-cyan/30 overflow-hidden">
-                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <img src={robotLimb} alt="Limb prototype" className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute bottom-1 left-2 font-mono text-[9px] uppercase tracking-[0.3em] text-cyan">limb_G47</div>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 

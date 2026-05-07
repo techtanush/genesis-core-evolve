@@ -463,10 +463,10 @@ const Index = () => {
                 ))}
               </div>
               <div className="absolute -top-6 left-0 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan/70 hidden md:block">
-                ◇ self_chip.die · in-house tape-out
+                ◇ scan → simulate → act · all on-chip
               </div>
               <div className="absolute -top-6 right-0 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80 hidden md:block">
-                Mental REPL ●
+                Closing the sim-to-real gap ●
               </div>
             </div>
           }

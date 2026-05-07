@@ -455,7 +455,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
-                {[["NODE", "3nm CLASS"], ["DIE STACK", "4-TIER 3D"], ["SYNAPSES", "1.02T/mm²"], ["POWER", "150W"]].map(([k, v]) => (
+                {[["ENERGY", "~15W"], ["LATENCY", "1.8 ms"], ["DATA SENT", "0 bytes"], ["NODE", "3nm class"]].map(([k, v]) => (
                   <div key={k} className="border border-border/60 bg-obsidian-soft/60 p-3 flex justify-between">
                     <span className="text-muted-foreground">{k}</span>
                     <span className="text-amber">{v}</span>

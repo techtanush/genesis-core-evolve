@@ -174,42 +174,8 @@ const Index = () => {
             </div>
           </Reveal>
 
-          {/* HERO IMAGE FRAME — Genesis Core chip */}
-          <Reveal delay={700}>
-            <div className="relative max-w-6xl mx-auto" id="chip">
-              {/* Floating tech labels */}
-              <div className="absolute -top-6 left-0 font-mono text-[10px] uppercase tracking-[0.3em] text-cyan/70 hidden md:block">
-                ◇ Schematic_Rev 1.0 · 2025-05-24
-              </div>
-              <div className="absolute -top-6 right-0 font-mono text-[10px] uppercase tracking-[0.3em] text-amber/80 hidden md:block">
-                Live Telemetry ●
-              </div>
-
-              <div className="corner-frame relative border border-cyan/40 p-3 bg-obsidian-soft/50 backdrop-blur-xl">
-                <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <div className="absolute inset-0 -z-10 blur-3xl opacity-60" style={{ background: "radial-gradient(ellipse at center, hsl(45 100% 50% / 0.25), hsl(186 100% 50% / 0.15) 40%, transparent 70%)" }} />
-                {/* Leaked stamp */}
-                <div className="absolute top-6 right-6 z-20 -rotate-[8deg] border-2 border-amber/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.35em] text-amber/90 bg-obsidian/40 backdrop-blur-sm">
-                  ◆ Leaked · 2036.04.18 · T-3
-                </div>
-                <div className="scan-line relative">
-                  <img src={chipImg} alt="Roboscale Genesis Core neuromorphic processor blueprint" width={1920} height={1080} className="w-full block" />
-                </div>
-              </div>
-
-              {/* Bottom strip - data */}
-              <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-2 font-mono text-[10px] uppercase tracking-[0.25em]">
-                {[
-                  ["NODE", "3nm CLASS"], ["DIE STACK", "4-TIER 3D"], ["BANDWIDTH", "71.2 TB/s"], ["TDP", "150W"]
-                ].map(([k, v]) => (
-                  <div key={k} className="border border-border/60 bg-obsidian-soft/60 p-3 flex justify-between">
-                    <span className="text-muted-foreground">{k}</span>
-                    <span className="text-cyan">{v}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+          {/* anchor kept for nav; chip showcase moved to Chapter 03 */}
+          <div id="chip" />
         </div>
       </section>
 

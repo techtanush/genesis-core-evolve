@@ -80,7 +80,7 @@ export const CradleTraining = () => {
   }, [smooth]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "520vh" }}>
+    <section ref={containerRef} className="relative" style={{ height: "300vh" }}>
       <div className="sticky top-0 min-h-screen w-full overflow-y-auto overflow-x-hidden lg:h-screen lg:overflow-hidden">
         {/* Atmospheric backdrop */}
         <div className="absolute inset-0 grid-bg-fine opacity-40" />

@@ -348,10 +348,10 @@ const Index = () => {
                 className="text-4xl md:text-7xl leading-[1.02] tracking-[-0.03em] mb-6"
                 style={{ fontFamily: "'Instrument Serif', serif", fontWeight: 400 }}
               >
-                The Cradle is not one simulation. It is a <span className="italic text-amber text-glow-amber">failure engine</span> running in parallel.
+                Teach a robot to learn <span className="italic text-amber text-glow-amber">like a baby.</span> That is the motto.
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                Every dropped cup, collapsed knee, over-tight grip, spilled liquid, missed catch, and recovered fall writes a small law of physics back into the agent. Curiosity is rewarded, task success is rewarded, and safe failure is preserved until common sense emerges.
+                The Cradle does not reward right answers. It rewards <span className="text-amber">curiosity</span> — the act of poking the world to see what changes. A baby drops a cup not to fail, but to learn that cups fall. So every spilled liquid, collapsed knee, missed catch, and over-tight grip is paid for in reward, because each one shrinks the unknown. Common sense is what's left when curiosity runs out of surprises.
               </p>
             </div>
             <div className="lg:col-span-5 grid sm:grid-cols-3 lg:grid-cols-1 gap-3 font-mono text-[10px] uppercase tracking-[0.24em]">

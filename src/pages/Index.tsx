@@ -358,7 +358,7 @@ const Index = () => {
               {[
                 ["parallel worlds", "1,048,576", "failed tests still train"],
                 ["physics priors", "gravity · water · friction", "laws learned by contact"],
-                ["reward shape", "curiosity + task + safe_fail", "common sense parameters"],
+                ["reward shape", "curiosity > correctness", "learn like a baby"],
               ].map(([k, v, s]) => (
                 <div key={k} className="border border-border/60 bg-obsidian-soft/50 p-4">
                   <div className="text-muted-foreground mb-2">{k}</div>

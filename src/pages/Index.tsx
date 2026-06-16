@@ -489,7 +489,7 @@ const Index = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@home.com"
+                    placeholder="ops@yourplant.com"
                     className="w-full border border-border bg-background px-4 py-4 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
                   />
                   <button type="submit" className="w-full border border-primary/50 bg-primary px-7 py-4 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary">

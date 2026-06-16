@@ -80,14 +80,10 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--amber) / 0.08), transparent 70%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, hsl(var(--cyan) / 0.06), transparent 70%);
-    cursor: none;
   }
   ::selection {
-    background: hsl(var(--amber) / 0.3);
-    color: hsl(var(--foreground));
+    background: hsl(var(--clay) / 0.25);
+    color: hsl(var(--ink));
   }
 }
 

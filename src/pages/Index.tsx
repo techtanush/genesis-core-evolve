@@ -255,20 +255,51 @@ const Index = () => {
 
       <CradleTraining />
 
+      <section className="relative border-y border-border bg-obsidian py-24 md:py-32">
+        <div className="container relative z-10">
+          <Reveal>
+            <Eyebrow tone="amber">Cradle · Curriculum tree</Eyebrow>
+            <h2 className="mt-6 max-w-3xl text-4xl leading-[1] tracking-normal md:text-6xl" style={serif}>
+              A first childhood, compressed into eight seconds.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Error → causal_gap → 10,000 dreamed variants → mastery. Each stage runs locally on the chip; nothing leaves the rack.
+            </p>
+          </Reveal>
+          <Reveal delay={140} className="mt-14">
+            <CradleRibbon />
+          </Reveal>
+          <Reveal delay={220} className="mt-20 grid items-center gap-10 md:grid-cols-12">
+            <div className="md:col-span-6 border border-border bg-card/40 p-6">
+              <CompressionDiagram />
+            </div>
+            <div className="md:col-span-6">
+              <Eyebrow tone="cyan">Distill</Eyebrow>
+              <h3 className="mt-5 text-3xl leading-tight md:text-5xl" style={serif}>
+                12 GB of dreamed experience becomes 38 KB of instinct.
+              </h3>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                A 316,000× compression. What survives is not memory — it is muscle. Flashed in-place to the sovereign self-chip in 8.3 seconds, with zero retraining.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section id="chip" className="relative overflow-hidden py-28 md:py-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--amber)/0.14),transparent_30%),radial-gradient(circle_at_80%_60%,hsl(var(--cyan)/0.13),transparent_34%)]" />
         <div className="container relative z-10 grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal>
             <div className="md:col-span-6">
-              <Eyebrow>02 · Sovereign self-chip</Eyebrow>
+              <Eyebrow>Pillar 02 · Sovereign self-chip</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                It thinks before it moves.
+                One die. Four blocks. Zero cloud.
               </h2>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Before the foot lifts, the chip simulates the motion locally — scanning the room, predicting contact, and choosing the safest low-energy path without asking the cloud.
+                The Cradle Block runs the curriculum on-die. The Imprint Bus distills the result. The REPL Core hot-swaps live policy mid-stride in 2.1 ms. The Fleet Link replicates new skill across every connected robot in 5 MB of delta-weights — data never leaves.
               </p>
-              <div className="mt-9 grid max-w-xl grid-cols-3 gap-3">
-                {[["1.8MS", "reflex"], ["100%", "on-device"], ["−72%", "watts"]].map(([n, l]) => (
+              <div className="mt-9 grid max-w-xl grid-cols-2 gap-3 md:grid-cols-4">
+                {[["7nm", "TSMC N7"], ["8.4B", "transistors"], ["12W", "peak TDP"], ["2.1ms", "hot-swap"]].map(([n, l]) => (
                   <div key={l} className="border border-border bg-card/70 p-4">
                     <div className="font-mono text-xl text-amber md:text-2xl">{n}</div>
                     <div className="mt-2 font-mono text-[9px] uppercase tracking-[0.26em] text-muted-foreground">{l}</div>
@@ -279,9 +310,13 @@ const Index = () => {
           </Reveal>
           <Reveal delay={160}>
             <div className="md:col-span-6">
-              <div className="corner-frame relative border border-border bg-card/40 p-3 scan-line">
+              <div className="corner-frame relative border border-border bg-card/40 p-6 scan-line">
                 <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <img src={genesisChip} alt="Futuristic on-device robot processor architecture" width={1447} height={1084} loading="lazy" className="w-full object-cover" />
+                <ChipBlueprint />
+                <div className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+                  <span>genesis_core · gen-1</span>
+                  <span className="text-cyan">● die blueprint</span>
+                </div>
               </div>
             </div>
           </Reveal>

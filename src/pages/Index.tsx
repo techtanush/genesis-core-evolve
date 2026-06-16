@@ -92,23 +92,25 @@ const Index = () => {
       </header>
 
       <section id="robot" className="relative overflow-hidden pt-16" style={{ minHeight: "100vh" }}>
-        <img
-          src={robotOrganic}
-          alt="Futuristic humanoid robot in a dark laboratory"
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover opacity-75"
-          style={{ objectPosition: "68% 50%" }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_34%,hsl(var(--cyan)/0.22),transparent_28%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background)/0.92)_38%,hsl(var(--background)/0.18)_76%,hsl(var(--background)/0.72)_100%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
+        <div className="absolute inset-y-0 right-0 w-full md:w-[68%]">
+          <img
+            src={robotOrganic}
+            alt="Futuristic humanoid robot in a dark laboratory"
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover opacity-80"
+            style={{ objectPosition: "58% 50%" }}
+          />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,hsl(var(--cyan)/0.2),transparent_28%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background))_33%,hsl(var(--background)/0.74)_48%,transparent_72%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="container relative z-10 grid items-end gap-10 pb-10 pt-20 md:grid-cols-12 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
-          <div className="md:col-span-6">
+        <div className="container relative z-10 flex items-end pb-10 pt-20 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
+          <div className="w-full max-w-2xl">
             <Reveal>
               <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
               <h1
-                className="mt-6 max-w-3xl font-black uppercase tracking-normal"
-                style={{ fontSize: "clamp(3.25rem, 6.8vw, 7rem)", lineHeight: 0.86 }}
+                className="mt-6 font-black uppercase tracking-normal"
+                style={{ fontSize: "clamp(3.5rem, 7vw, 7.5rem)", lineHeight: 0.86 }}
               >
                 Born in
                 <br />
@@ -139,8 +141,8 @@ const Index = () => {
             </Reveal>
           </div>
 
-          <Reveal delay={320} className="md:col-span-4 md:col-start-9">
-            <div className="mt-12 border border-border/70 bg-background/75 p-4 backdrop-blur-xl md:mt-0">
+          <Reveal delay={320} className="absolute bottom-16 right-8 hidden w-[360px] lg:block xl:right-16">
+            <div className="border border-border/70 bg-background/80 p-4 backdrop-blur-xl">
               <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
                 <span>Live policy</span>
                 <span className="text-cyan">● Online</span>

@@ -90,21 +90,25 @@ const Index = () => {
         </div>
       </header>
 
-      <section id="robot" className="relative min-h-[100svh] overflow-hidden pt-16">
+      <section id="robot" className="relative overflow-hidden pt-16" style={{ minHeight: "100vh" }}>
         <img
           src={robotOrganic}
           alt="Futuristic humanoid robot in a dark laboratory"
           width={1920}
           height={1080}
           className="absolute inset-0 h-full w-full object-cover opacity-80"
+          style={{ objectPosition: "62% 50%" }}
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_38%,hsl(var(--cyan)/0.18),transparent_32%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background)/0.84)_35%,transparent_72%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="container relative z-10 grid min-h-[calc(100svh-4rem)] items-end pb-10 pt-20 md:grid-cols-12 md:pb-16">
+        <div className="container relative z-10 grid items-end gap-10 pb-10 pt-20 md:grid-cols-12 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
           <div className="md:col-span-7">
             <Reveal>
               <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
-              <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] tracking-normal md:text-7xl lg:text-8xl" style={serif}>
+              <h1
+                className="mt-6 max-w-4xl tracking-normal"
+                style={{ ...serif, fontSize: "clamp(4.25rem, 8vw, 8rem)", lineHeight: 0.9 }}
+              >
                 Born in simulation.
                 <br />
                 Raised by <span className="italic text-amber text-glow-amber">curiosity.</span>
@@ -132,15 +136,15 @@ const Index = () => {
           </div>
 
           <Reveal delay={320}>
-            <div className="mt-12 border border-border/70 bg-background/55 p-4 backdrop-blur-xl md:col-span-5 md:mt-0">
+            <div className="mt-12 border border-border/70 bg-background/60 p-4 backdrop-blur-xl md:col-span-5 md:mt-0">
               <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
                 <span>Live policy</span>
                 <span className="text-cyan">● Online</span>
               </div>
               <div className="space-y-3">
                 {metricRows.map(([label, value]) => (
-                  <div key={label} className="flex items-center justify-between border border-border/50 bg-obsidian-soft/70 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.22em]">
-                    <span className="text-muted-foreground">{label}</span>
+                  <div key={label} className="flex items-center justify-between gap-4 border border-border/50 bg-obsidian-soft/70 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em]">
+                    <span className="min-w-0 break-all text-muted-foreground">{label}</span>
                     <span className="text-amber">{value}</span>
                   </div>
                 ))}

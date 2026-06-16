@@ -6,6 +6,15 @@
 
 @layer base {
   :root {
+    /* Editorial palette (1x-inspired warm cream + ink) */
+    --cream: 36 28% 92%;
+    --cream-soft: 34 22% 88%;
+    --cream-warm: 32 32% 84%;
+    --ink: 24 12% 10%;
+    --ink-soft: 24 8% 28%;
+    --stone: 28 6% 46%;
+    --clay: 18 55% 42%;
+
     /* Stealth Tech / Biological Evolution palette */
     --background: 0 0% 2%;
     --foreground: 40 30% 96%;

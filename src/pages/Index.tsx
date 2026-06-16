@@ -91,12 +91,12 @@ const Index = () => {
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#team">Team</a>
           </nav>
-          <button
-            onClick={() => setOpen(true)}
+          <a
+            href="#materials"
             className="border border-primary/50 bg-primary px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
           >
-            Reserve
-          </button>
+            Read the deck
+          </a>
         </div>
       </header>
 
@@ -134,12 +134,12 @@ const Index = () => {
                 Genesis Core lets an industrial robot learn the world like a child does — through curiosity, in real time, on a single sovereign chip. No cloud. No pass / fail. Just physics becoming instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <button
-                  onClick={() => setOpen(true)}
+                <a
+                  href="#pillars"
                   className="inline-flex items-center justify-center gap-3 border border-primary/60 bg-primary px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary hover:shadow-[var(--glow-cyan-soft)]"
                 >
-                  Reserve Genesis <ArrowUpRight className="h-4 w-4" />
-                </button>
+                  See the framework <ArrowUpRight className="h-4 w-4" />
+                </a>
                 <a
                   href="#materials"
                   className="inline-flex items-center justify-center gap-3 border border-border bg-card/45 px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-foreground transition-colors hover:border-secondary hover:text-cyan"
@@ -475,35 +475,37 @@ const Index = () => {
         <div className="container relative z-10 grid gap-10 md:grid-cols-12 md:items-center">
           <Reveal>
             <div className="md:col-span-7">
-              <Eyebrow tone="amber">Reserve</Eyebrow>
+              <Eyebrow tone="amber">Framework · Seed 2026</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                Three lighthouse pilots. Then every robot on the floor.
+                Genesis Core is a framework we are bringing to life.
               </h2>
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground">
+                Not a unit. Not a product SKU. A cognitive substrate — curriculum, silicon, simulation, and language — that any embodied platform can adopt to give its robots a mind of their own.
+              </p>
             </div>
           </Reveal>
           <Reveal delay={140}>
-            <div className="md:col-span-5">
-              {!done ? (
-                <form onSubmit={submit} className="space-y-3">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="ops@yourplant.com"
-                    className="w-full border border-border bg-background px-4 py-4 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-                  />
-                  <button type="submit" className="w-full border border-primary/50 bg-primary px-7 py-4 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary">
-                    Reserve Genesis
-                  </button>
-                </form>
-              ) : (
-                <div className="border border-primary/50 bg-card p-6 font-mono text-[12px] uppercase tracking-[0.3em] text-amber">
-                  ◇ You're on the list ◇
-                </div>
-              )}
-              <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                Seed cohort · 2026 lighthouse pilots
-              </div>
+            <div className="md:col-span-5 space-y-3">
+              <a
+                href="#materials"
+                className="flex w-full items-center justify-between gap-4 border border-primary/50 bg-primary px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
+              >
+                Read the deck <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="https://drive.google.com/drive/folders/12WVfXE1TvM9SP5k6qb9OQZaTUVmMx7AK?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-between gap-4 border border-border bg-card/60 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-cyan/60 hover:text-cyan"
+              >
+                Open the archive <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#team"
+                className="flex w-full items-center justify-between gap-4 border border-border bg-card/60 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-cyan/60 hover:text-cyan"
+              >
+                Talk to the founders <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
           </Reveal>
         </div>

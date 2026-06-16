@@ -6,6 +6,15 @@
 
 @layer base {
   :root {
+    /* Editorial palette (1x-inspired warm cream + ink) */
+    --cream: 36 28% 92%;
+    --cream-soft: 34 22% 88%;
+    --cream-warm: 32 32% 84%;
+    --ink: 24 12% 10%;
+    --ink-soft: 24 8% 28%;
+    --stone: 28 6% 46%;
+    --clay: 18 55% 42%;
+
     /* Stealth Tech / Biological Evolution palette */
     --background: 0 0% 2%;
     --foreground: 40 30% 96%;
@@ -71,14 +80,10 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
-    background-image:
-      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(var(--amber) / 0.08), transparent 70%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, hsl(var(--cyan) / 0.06), transparent 70%);
-    cursor: none;
   }
   ::selection {
-    background: hsl(var(--amber) / 0.3);
-    color: hsl(var(--foreground));
+    background: hsl(var(--clay) / 0.25);
+    color: hsl(var(--ink));
   }
 }
 

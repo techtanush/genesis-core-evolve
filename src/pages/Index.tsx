@@ -116,22 +116,22 @@ const Index = () => {
         <div className="container relative z-10 flex items-end pb-10 pt-20 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
           <div className="w-full max-w-2xl">
             <Reveal>
-              <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
+              <Eyebrow>Roboscale · Genesis Core · Seed 2026</Eyebrow>
               <h1
                 className="mt-6 font-black uppercase tracking-normal"
-                style={{ fontSize: "clamp(3.5rem, 7vw, 7.5rem)", lineHeight: 0.86 }}
+                style={{ fontSize: "clamp(3.25rem, 6.6vw, 7rem)", lineHeight: 0.86 }}
               >
-                Born in
+                A mind
                 <br />
-                simulation.
+                of its own.
               </h1>
               <div className="mt-5 font-mono text-sm uppercase tracking-[0.24em] text-amber text-glow-amber md:text-base">
-                Raised by curiosity · not obedience
+                The cognitive substrate for physical AI
               </div>
             </Reveal>
             <Reveal delay={180}>
               <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Teach a robot to learn like a baby: not by memorizing right answers, but by being rewarded for poking the world until physics becomes instinct.
+                Genesis Core lets an industrial robot learn the world like a child does — through curiosity, in real time, on a single sovereign chip. No cloud. No pass / fail. Just physics becoming instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <button

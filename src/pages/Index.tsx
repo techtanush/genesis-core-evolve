@@ -6,7 +6,7 @@ import robotPortrait from "@/assets/robot-organic-2.jpg";
 import labWide from "@/assets/lab-wide.jpg";
 import parallelWorlds from "@/assets/parallel-worlds.jpg";
 import cradleGrasp from "@/assets/cradle-grasp.jpg";
-import genesisChip from "@/assets/genesis-core-chip.png";
+
 import tendonMacro from "@/assets/tendon-macro.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
 import robotWalk from "@/assets/edit-robot-walk.mp4.asset.json";

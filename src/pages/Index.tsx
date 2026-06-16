@@ -180,6 +180,28 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="pillars" className="relative overflow-hidden py-28 md:py-36">
+        <div className="absolute inset-0 grid-bg-fine opacity-20" />
+        <div className="container relative z-10">
+          <Reveal>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-7">
+                <Eyebrow tone="cyan">System architecture</Eyebrow>
+                <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
+                  Four pillars hold up a sovereign mind.
+                </h2>
+              </div>
+              <p className="md:col-span-5 text-base leading-relaxed text-muted-foreground">
+                Curriculum, silicon, simulation, language. Each pillar is a discipline; together they are the substrate of physical intelligence — and the path from a bench prototype to a factory floor.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={140} className="mt-14">
+            <PillarsGrid />
+          </Reveal>
+        </div>
+      </section>
+
       <section className="relative overflow-hidden py-28 md:py-40">
         <div className="absolute inset-0 grid-bg-fine opacity-30" />
         <div className="container relative z-10 grid gap-12 md:grid-cols-12 md:items-center">

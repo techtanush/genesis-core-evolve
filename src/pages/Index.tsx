@@ -502,7 +502,7 @@ const Index = () => {
                 </div>
               )}
               <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                2,847 reservations · Genesis cohort
+                Seed cohort · 2026 lighthouse pilots
               </div>
             </div>
           </Reveal>

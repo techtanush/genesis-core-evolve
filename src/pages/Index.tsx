@@ -379,6 +379,36 @@ const Index = () => {
         </div>
       </section>
 
+      <section id="market" className="relative overflow-hidden border-y border-border bg-obsidian py-28 md:py-36">
+        <div className="absolute inset-0 grid-bg-fine opacity-20" />
+        <div className="container relative z-10 grid gap-12 md:grid-cols-12 md:items-center">
+          <Reveal>
+            <div className="md:col-span-5">
+              <Eyebrow tone="amber">The boom is now</Eyebrow>
+              <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
+                $24.4T by 2034.
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                Physical AI is forecast to outgrow every previous wave of computing — combined. A 17× expansion in eight years. Genesis Core is the substrate that wave runs on.
+              </p>
+              <div className="mt-7 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                Forbes · Goldman Sachs · McKinsey · Consensus 2025–2026
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={160}>
+            <div className="md:col-span-7 border border-border bg-card/40 p-6">
+              <MarketCurve />
+              <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.26em] text-muted-foreground">
+                <span>Physical AI · total addressable</span>
+                <span className="text-cyan">● 2026 → 2033</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+
       <section id="materials" className="border-y border-border bg-card py-24 md:py-32">
         <div className="container grid gap-10 md:grid-cols-12 md:items-end">
           <Reveal>

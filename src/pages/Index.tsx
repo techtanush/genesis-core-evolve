@@ -280,6 +280,49 @@ const Index = () => {
           </Reveal>
         </div>
       </section>
+      {/* MATERIALS */}
+      <section id="materials" className="py-32 md:py-40 px-6 md:px-10">
+        <div className="mx-auto max-w-[1200px] grid md:grid-cols-12 gap-10 items-end">
+          <Reveal>
+            <div className="md:col-span-6">
+              <Eyebrow>Materials</Eyebrow>
+              <h2 className="mt-6 text-[clamp(2rem,4.5vw,4rem)] tracking-[-0.02em] leading-[1.04]" style={serif}>
+                The full <em className="italic text-[hsl(var(--clay))]">archive.</em>
+              </h2>
+              <p className="mt-6 text-lg text-[hsl(var(--ink-soft))] leading-relaxed max-w-md">
+                Slide deck, one-pager, manifesto film, and the full presentation — all kept in one quiet folder.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={150}>
+            <div className="md:col-span-6 md:col-start-7">
+              <ul className="divide-y divide-[hsl(var(--ink))]/10 border-y border-[hsl(var(--ink))]/10">
+                {[
+                  ["Slide deck", "PDF"],
+                  ["One-pager", "PDF"],
+                  ["Manifesto", "Video"],
+                  ["Presentation", "Video"],
+                ].map(([label, kind]) => (
+                  <li key={label} className="flex items-baseline justify-between py-5">
+                    <span className="text-2xl tracking-[-0.01em]" style={serif}>{label}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[hsl(var(--stone))]">{kind}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://drive.google.com/drive/folders/12WVfXE1TvM9SP5k6qb9OQZaTUVmMx7AK?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.32em] px-7 py-4 rounded-full bg-[hsl(var(--ink))] text-[hsl(var(--cream))] hover:bg-[hsl(var(--clay))] transition-colors"
+              >
+                Open the folder
+                <span aria-hidden>↗</span>
+              </a>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
 
       {/* TEAM */}
       <section id="team" className="py-32 md:py-40 px-6 md:px-10 bg-[hsl(var(--cream-soft))]">

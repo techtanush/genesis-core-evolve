@@ -6,7 +6,7 @@ import robotPortrait from "@/assets/robot-organic-2.jpg";
 import labWide from "@/assets/lab-wide.jpg";
 import parallelWorlds from "@/assets/parallel-worlds.jpg";
 import cradleGrasp from "@/assets/cradle-grasp.jpg";
-import genesisChip from "@/assets/genesis-core-chip.png";
+
 import tendonMacro from "@/assets/tendon-macro.jpg";
 import robotLimb from "@/assets/robot-limb.jpg";
 import robotWalk from "@/assets/edit-robot-walk.mp4.asset.json";
@@ -14,6 +14,13 @@ import founderTanush from "@/assets/founder-tanush-exact.png";
 import founderAaryan from "@/assets/founder-aaryan-exact.png";
 import { CradleTraining } from "@/components/CradleTraining";
 import { WaitlistModal } from "@/components/Waitlist";
+import {
+  MarketCurve,
+  CradleRibbon,
+  ChipBlueprint,
+  CompressionDiagram,
+  PillarsGrid,
+} from "@/components/DeckDiagrams";
 import { toast } from "sonner";
 
 const serif: CSSProperties = { fontFamily: "'Instrument Serif', serif", fontWeight: 400 };
@@ -72,11 +79,13 @@ const Index = () => {
             Roboscale
           </a>
           <nav className="hidden items-center gap-5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground md:flex">
-            <a className="transition-colors hover:text-cyan" href="#robot">Robot</a>
+            <a className="transition-colors hover:text-cyan" href="#pillars">Pillars</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#cradle">Cradle</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#chip">Self-Chip</a>
+            <span className="text-border">/</span>
+            <a className="transition-colors hover:text-cyan" href="#market">Market</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#materials">Materials</a>
             <span className="text-border">/</span>
@@ -107,22 +116,22 @@ const Index = () => {
         <div className="container relative z-10 flex items-end pb-10 pt-20 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
           <div className="w-full max-w-2xl">
             <Reveal>
-              <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
+              <Eyebrow>Roboscale · Genesis Core · Seed 2026</Eyebrow>
               <h1
                 className="mt-6 font-black uppercase tracking-normal"
-                style={{ fontSize: "clamp(3.5rem, 7vw, 7.5rem)", lineHeight: 0.86 }}
+                style={{ fontSize: "clamp(3.25rem, 6.6vw, 7rem)", lineHeight: 0.86 }}
               >
-                Born in
+                A mind
                 <br />
-                simulation.
+                of its own.
               </h1>
               <div className="mt-5 font-mono text-sm uppercase tracking-[0.24em] text-amber text-glow-amber md:text-base">
-                Raised by curiosity · not obedience
+                The cognitive substrate for physical AI
               </div>
             </Reveal>
             <Reveal delay={180}>
               <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Teach a robot to learn like a baby: not by memorizing right answers, but by being rewarded for poking the world until physics becomes instinct.
+                Genesis Core lets an industrial robot learn the world like a child does — through curiosity, in real time, on a single sovereign chip. No cloud. No pass / fail. Just physics becoming instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <button
@@ -168,6 +177,28 @@ const Index = () => {
               {item}
             </div>
           ))}
+        </div>
+      </section>
+
+      <section id="pillars" className="relative overflow-hidden py-28 md:py-36">
+        <div className="absolute inset-0 grid-bg-fine opacity-20" />
+        <div className="container relative z-10">
+          <Reveal>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-7">
+                <Eyebrow tone="cyan">System architecture</Eyebrow>
+                <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
+                  Four pillars hold up a sovereign mind.
+                </h2>
+              </div>
+              <p className="md:col-span-5 text-base leading-relaxed text-muted-foreground">
+                Curriculum, silicon, simulation, language. Each pillar is a discipline; together they are the substrate of physical intelligence — and the path from a bench prototype to a factory floor.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal delay={140} className="mt-14">
+            <PillarsGrid />
+          </Reveal>
         </div>
       </section>
 
@@ -224,20 +255,51 @@ const Index = () => {
 
       <CradleTraining />
 
+      <section className="relative border-y border-border bg-obsidian py-24 md:py-32">
+        <div className="container relative z-10">
+          <Reveal>
+            <Eyebrow tone="amber">Cradle · Curriculum tree</Eyebrow>
+            <h2 className="mt-6 max-w-3xl text-4xl leading-[1] tracking-normal md:text-6xl" style={serif}>
+              A first childhood, compressed into eight seconds.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Error → causal_gap → 10,000 dreamed variants → mastery. Each stage runs locally on the chip; nothing leaves the rack.
+            </p>
+          </Reveal>
+          <Reveal delay={140} className="mt-14">
+            <CradleRibbon />
+          </Reveal>
+          <Reveal delay={220} className="mt-20 grid items-center gap-10 md:grid-cols-12">
+            <div className="md:col-span-6 border border-border bg-card/40 p-6">
+              <CompressionDiagram />
+            </div>
+            <div className="md:col-span-6">
+              <Eyebrow tone="cyan">Distill</Eyebrow>
+              <h3 className="mt-5 text-3xl leading-tight md:text-5xl" style={serif}>
+                12 GB of dreamed experience becomes 38 KB of instinct.
+              </h3>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                A 316,000× compression. What survives is not memory — it is muscle. Flashed in-place to the sovereign self-chip in 8.3 seconds, with zero retraining.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       <section id="chip" className="relative overflow-hidden py-28 md:py-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,hsl(var(--amber)/0.14),transparent_30%),radial-gradient(circle_at_80%_60%,hsl(var(--cyan)/0.13),transparent_34%)]" />
         <div className="container relative z-10 grid gap-12 md:grid-cols-12 md:items-center">
           <Reveal>
             <div className="md:col-span-6">
-              <Eyebrow>02 · Sovereign self-chip</Eyebrow>
+              <Eyebrow>Pillar 02 · Sovereign self-chip</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                It thinks before it moves.
+                One die. Four blocks. Zero cloud.
               </h2>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Before the foot lifts, the chip simulates the motion locally — scanning the room, predicting contact, and choosing the safest low-energy path without asking the cloud.
+                The Cradle Block runs the curriculum on-die. The Imprint Bus distills the result. The REPL Core hot-swaps live policy mid-stride in 2.1 ms. The Fleet Link replicates new skill across every connected robot in 5 MB of delta-weights — data never leaves.
               </p>
-              <div className="mt-9 grid max-w-xl grid-cols-3 gap-3">
-                {[["1.8MS", "reflex"], ["100%", "on-device"], ["−72%", "watts"]].map(([n, l]) => (
+              <div className="mt-9 grid max-w-xl grid-cols-2 gap-3 md:grid-cols-4">
+                {[["7nm", "TSMC N7"], ["8.4B", "transistors"], ["12W", "peak TDP"], ["2.1ms", "hot-swap"]].map(([n, l]) => (
                   <div key={l} className="border border-border bg-card/70 p-4">
                     <div className="font-mono text-xl text-amber md:text-2xl">{n}</div>
                     <div className="mt-2 font-mono text-[9px] uppercase tracking-[0.26em] text-muted-foreground">{l}</div>
@@ -248,9 +310,13 @@ const Index = () => {
           </Reveal>
           <Reveal delay={160}>
             <div className="md:col-span-6">
-              <div className="corner-frame relative border border-border bg-card/40 p-3 scan-line">
+              <div className="corner-frame relative border border-border bg-card/40 p-6 scan-line">
                 <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
-                <img src={genesisChip} alt="Futuristic on-device robot processor architecture" width={1447} height={1084} loading="lazy" className="w-full object-cover" />
+                <ChipBlueprint />
+                <div className="mt-3 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.28em] text-muted-foreground">
+                  <span>genesis_core · gen-1</span>
+                  <span className="text-cyan">● die blueprint</span>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -312,6 +378,36 @@ const Index = () => {
           </Reveal>
         </div>
       </section>
+
+      <section id="market" className="relative overflow-hidden border-y border-border bg-obsidian py-28 md:py-36">
+        <div className="absolute inset-0 grid-bg-fine opacity-20" />
+        <div className="container relative z-10 grid gap-12 md:grid-cols-12 md:items-center">
+          <Reveal>
+            <div className="md:col-span-5">
+              <Eyebrow tone="amber">The boom is now</Eyebrow>
+              <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
+                $24.4T by 2034.
+              </h2>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                Physical AI is forecast to outgrow every previous wave of computing — combined. A 17× expansion in eight years. Genesis Core is the substrate that wave runs on.
+              </p>
+              <div className="mt-7 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                Forbes · Goldman Sachs · McKinsey · Consensus 2025–2026
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={160}>
+            <div className="md:col-span-7 border border-border bg-card/40 p-6">
+              <MarketCurve />
+              <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.26em] text-muted-foreground">
+                <span>Physical AI · total addressable</span>
+                <span className="text-cyan">● 2026 → 2033</span>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
 
       <section id="materials" className="border-y border-border bg-card py-24 md:py-32">
         <div className="container grid gap-10 md:grid-cols-12 md:items-end">
@@ -381,7 +477,7 @@ const Index = () => {
             <div className="md:col-span-7">
               <Eyebrow tone="amber">Reserve</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                The first curious machines ship to a few homes.
+                Three lighthouse pilots. Then every robot on the floor.
               </h2>
             </div>
           </Reveal>
@@ -393,7 +489,7 @@ const Index = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@home.com"
+                    placeholder="ops@yourplant.com"
                     className="w-full border border-border bg-background px-4 py-4 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
                   />
                   <button type="submit" className="w-full border border-primary/50 bg-primary px-7 py-4 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary">
@@ -406,7 +502,7 @@ const Index = () => {
                 </div>
               )}
               <div className="mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                2,847 reservations · Genesis cohort
+                Seed cohort · 2026 lighthouse pilots
               </div>
             </div>
           </Reveal>

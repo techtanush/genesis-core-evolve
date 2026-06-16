@@ -70,11 +70,15 @@ const Index = () => {
           <a href="#" className="font-mono text-[11px] uppercase tracking-[0.34em] text-foreground">
             Roboscale
           </a>
-          <nav className="hidden items-center gap-8 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:flex">
+          <nav className="hidden items-center gap-5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground md:flex">
             <a className="transition-colors hover:text-cyan" href="#robot">Robot</a>
+            <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#cradle">Cradle</a>
+            <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#chip">Self-Chip</a>
+            <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#materials">Materials</a>
+            <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#team">Team</a>
           </nav>
           <button
@@ -97,16 +101,18 @@ const Index = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_38%,hsl(var(--cyan)/0.18),transparent_32%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background)/0.84)_35%,transparent_72%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="container relative z-10 grid min-h-[calc(100svh-4rem)] items-end pb-10 pt-20 md:grid-cols-12 md:pb-16">
-          <div className="md:col-span-8">
+          <div className="md:col-span-7">
             <Reveal>
               <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
-              <h1 className="mt-6 max-w-5xl text-6xl leading-[0.9] tracking-normal md:text-8xl lg:text-9xl" style={serif}>
-                Teach a robot to learn <span className="italic text-amber text-glow-amber">like a baby.</span>
+              <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] tracking-normal md:text-7xl lg:text-8xl" style={serif}>
+                Born in simulation.
+                <br />
+                Raised by <span className="italic text-amber text-glow-amber">curiosity.</span>
               </h1>
             </Reveal>
             <Reveal delay={180}>
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-                A sovereign humanoid raised in millions of parallel worlds, rewarded for curiosity, and refined for the strange physics of real homes.
+              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                Teach a robot to learn like a baby: not by memorizing right answers, but by being rewarded for poking the world until physics becomes instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <button
@@ -126,7 +132,7 @@ const Index = () => {
           </div>
 
           <Reveal delay={320}>
-            <div className="mt-12 border border-border/70 bg-background/55 p-4 backdrop-blur-xl md:col-span-4 md:mt-0">
+            <div className="mt-12 border border-border/70 bg-background/55 p-4 backdrop-blur-xl md:col-span-5 md:mt-0">
               <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
                 <span>Live policy</span>
                 <span className="text-cyan">● Online</span>

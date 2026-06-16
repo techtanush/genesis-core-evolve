@@ -14,6 +14,13 @@ import founderTanush from "@/assets/founder-tanush-exact.png";
 import founderAaryan from "@/assets/founder-aaryan-exact.png";
 import { CradleTraining } from "@/components/CradleTraining";
 import { WaitlistModal } from "@/components/Waitlist";
+import {
+  MarketCurve,
+  CradleRibbon,
+  ChipBlueprint,
+  CompressionDiagram,
+  PillarsGrid,
+} from "@/components/DeckDiagrams";
 import { toast } from "sonner";
 
 const serif: CSSProperties = { fontFamily: "'Instrument Serif', serif", fontWeight: 400 };

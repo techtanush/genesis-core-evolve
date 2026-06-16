@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, DatabaseZap, Cpu, Orbit, Sparkles } from "lucide-react";
 import robotOrganic from "@/assets/robot-organic-1.jpg";
@@ -16,9 +16,9 @@ import { CradleTraining } from "@/components/CradleTraining";
 import { WaitlistModal } from "@/components/Waitlist";
 import { toast } from "sonner";
 
-const serif: React.CSSProperties = { fontFamily: "'Instrument Serif', serif", fontWeight: 400 };
+const serif: CSSProperties = { fontFamily: "'Instrument Serif', serif", fontWeight: 400 };
 
-const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
+const Reveal = ({ children, delay = 0 }: { children: ReactNode; delay?: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 28 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ const Reveal = ({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   </motion.div>
 );
 
-const Eyebrow = ({ children, tone = "cyan" }: { children: React.ReactNode; tone?: "cyan" | "amber" | "muted" }) => (
+const Eyebrow = ({ children, tone = "cyan" }: { children: ReactNode; tone?: "cyan" | "amber" | "muted" }) => (
   <div
     className={`font-mono text-[10px] uppercase tracking-[0.34em] ${
       tone === "amber" ? "text-amber" : tone === "cyan" ? "text-cyan" : "text-muted-foreground"

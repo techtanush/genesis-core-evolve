@@ -18,12 +18,13 @@ import { toast } from "sonner";
 
 const serif: CSSProperties = { fontFamily: "'Instrument Serif', serif", fontWeight: 400 };
 
-const Reveal = ({ children, delay = 0 }: { children: ReactNode; delay?: number }) => (
+const Reveal = ({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 28 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.22 }}
     transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: delay / 1000 }}
+    className={className}
   >
     {children}
   </motion.div>
@@ -96,26 +97,29 @@ const Index = () => {
           alt="Futuristic humanoid robot in a dark laboratory"
           width={1920}
           height={1080}
-          className="absolute inset-0 h-full w-full object-cover opacity-80"
-          style={{ objectPosition: "62% 50%" }}
+          className="absolute inset-0 h-full w-full object-cover opacity-75"
+          style={{ objectPosition: "68% 50%" }}
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_38%,hsl(var(--cyan)/0.18),transparent_32%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background)/0.84)_35%,transparent_72%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_34%,hsl(var(--cyan)/0.22),transparent_28%),linear-gradient(90deg,hsl(var(--background))_0%,hsl(var(--background)/0.92)_38%,hsl(var(--background)/0.18)_76%,hsl(var(--background)/0.72)_100%),linear-gradient(0deg,hsl(var(--background))_0%,transparent_45%)]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="container relative z-10 grid items-end gap-10 pb-10 pt-20 md:grid-cols-12 md:pb-16" style={{ minHeight: "calc(100vh - 4rem)" }}>
-          <div className="md:col-span-7">
+          <div className="md:col-span-6">
             <Reveal>
               <Eyebrow>Genesis Series · Embodied AI</Eyebrow>
               <h1
-                className="mt-6 max-w-4xl tracking-normal"
-                style={{ ...serif, fontSize: "clamp(4.25rem, 8vw, 8rem)", lineHeight: 0.9 }}
+                className="mt-6 max-w-3xl font-black uppercase tracking-normal"
+                style={{ fontSize: "clamp(3.25rem, 6.8vw, 7rem)", lineHeight: 0.86 }}
               >
-                Born in simulation.
+                Born in
                 <br />
-                Raised by <span className="italic text-amber text-glow-amber">curiosity.</span>
+                simulation.
               </h1>
+              <div className="mt-5 font-mono text-sm uppercase tracking-[0.24em] text-amber text-glow-amber md:text-base">
+                Raised by curiosity · not obedience
+              </div>
             </Reveal>
             <Reveal delay={180}>
-              <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 Teach a robot to learn like a baby: not by memorizing right answers, but by being rewarded for poking the world until physics becomes instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -135,16 +139,16 @@ const Index = () => {
             </Reveal>
           </div>
 
-          <Reveal delay={320}>
-            <div className="mt-12 border border-border/70 bg-background/60 p-4 backdrop-blur-xl md:col-span-5 md:mt-0">
+          <Reveal delay={320} className="md:col-span-4 md:col-start-9">
+            <div className="mt-12 border border-border/70 bg-background/75 p-4 backdrop-blur-xl md:mt-0">
               <div className="mb-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
                 <span>Live policy</span>
                 <span className="text-cyan">● Online</span>
               </div>
               <div className="space-y-3">
                 {metricRows.map(([label, value]) => (
-                  <div key={label} className="flex items-center justify-between gap-4 border border-border/50 bg-obsidian-soft/70 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.16em]">
-                    <span className="min-w-0 break-all text-muted-foreground">{label}</span>
+                  <div key={label} className="grid grid-cols-[1fr_auto] items-center gap-4 border border-border/50 bg-obsidian-soft/70 px-3 py-3 font-mono text-[10px] uppercase tracking-[0.14em]">
+                    <span className="min-w-0 text-muted-foreground">{label}</span>
                     <span className="text-amber">{value}</span>
                   </div>
                 ))}

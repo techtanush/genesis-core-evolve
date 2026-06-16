@@ -60,6 +60,7 @@ const Index = () => {
             <a href="#cradle" className="hover:text-[hsl(var(--clay))] transition-colors">Cradle</a>
             <a href="#chip" className="hover:text-[hsl(var(--clay))] transition-colors">Self-Chip</a>
             <a href="#vibe" className="hover:text-[hsl(var(--clay))] transition-colors">Vibe</a>
+            <a href="#materials" className="hover:text-[hsl(var(--clay))] transition-colors">Materials</a>
             <a href="#team" className="hover:text-[hsl(var(--clay))] transition-colors">Team</a>
           </nav>
           <button

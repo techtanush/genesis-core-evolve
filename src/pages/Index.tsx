@@ -79,11 +79,13 @@ const Index = () => {
             Roboscale
           </a>
           <nav className="hidden items-center gap-5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground md:flex">
-            <a className="transition-colors hover:text-cyan" href="#robot">Robot</a>
+            <a className="transition-colors hover:text-cyan" href="#pillars">Pillars</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#cradle">Cradle</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#chip">Self-Chip</a>
+            <span className="text-border">/</span>
+            <a className="transition-colors hover:text-cyan" href="#market">Market</a>
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#materials">Materials</a>
             <span className="text-border">/</span>

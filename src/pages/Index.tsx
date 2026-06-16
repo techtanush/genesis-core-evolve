@@ -134,12 +134,12 @@ const Index = () => {
                 Genesis Core lets an industrial robot learn the world like a child does — through curiosity, in real time, on a single sovereign chip. No cloud. No pass / fail. Just physics becoming instinct.
               </p>
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <button
-                  onClick={() => setOpen(true)}
+                <a
+                  href="#pillars"
                   className="inline-flex items-center justify-center gap-3 border border-primary/60 bg-primary px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary hover:shadow-[var(--glow-cyan-soft)]"
                 >
-                  Reserve Genesis <ArrowUpRight className="h-4 w-4" />
-                </button>
+                  See the framework <ArrowUpRight className="h-4 w-4" />
+                </a>
                 <a
                   href="#materials"
                   className="inline-flex items-center justify-center gap-3 border border-border bg-card/45 px-7 py-4 font-mono text-[11px] uppercase tracking-[0.28em] text-foreground transition-colors hover:border-secondary hover:text-cyan"

@@ -477,7 +477,7 @@ const Index = () => {
             <div className="md:col-span-7">
               <Eyebrow tone="amber">Reserve</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                The first curious machines ship to a few homes.
+                Three lighthouse pilots. Then every robot on the floor.
               </h2>
             </div>
           </Reveal>

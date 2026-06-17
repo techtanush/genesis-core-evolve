@@ -517,6 +517,7 @@ const Index = () => {
           <div>Curiosity rewarded · Made on Earth</div>
         </div>
       </footer>
+      <FloatingAccess onOpen={() => setOpen(true)} />
     </div>
   );
 };

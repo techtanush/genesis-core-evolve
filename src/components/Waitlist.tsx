@@ -93,7 +93,7 @@ export const FloatingAccess = ({ onOpen }: { onOpen: () => void }) => {
       <div className="absolute inset-0 bg-amber/40 blur-xl group-hover:bg-amber/70 transition-all" />
       <div className="relative flex items-center gap-3 bg-obsidian border border-amber px-5 py-3 font-mono text-xs uppercase tracking-[0.25em] text-amber group-hover:bg-amber group-hover:text-obsidian transition-all">
         <span className="h-2 w-2 rounded-full bg-amber pulse-amber" />
-        Secure Alpha Access
+        Join the builder program
       </div>
     </button>
   );

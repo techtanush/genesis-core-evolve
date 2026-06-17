@@ -91,12 +91,12 @@ const Index = () => {
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#team">Team</a>
           </nav>
-          <a
-            href="#materials"
+          <button
+            onClick={() => setOpen(true)}
             className="border border-primary/50 bg-primary px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
           >
-            Read the deck
-          </a>
+            Join the builder program
+          </button>
         </div>
       </header>
 

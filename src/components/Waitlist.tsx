@@ -41,9 +41,9 @@ export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenCha
           <div className="corner-frame absolute inset-0">
             <span className="corner-tl" /><span className="corner-tr" /><span className="corner-bl" /><span className="corner-br" />
           </div>
-          <DialogTitle className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-2">// SECURE_ALPHA_GATEWAY</DialogTitle>
-          <DialogDescription className="text-2xl font-semibold text-foreground mb-1 tracking-tight">Request Sovereign Access.</DialogDescription>
-          <p className="text-sm text-muted-foreground mb-6 font-mono">Limited cohort. Operators, researchers, capital allocators.</p>
+          <DialogTitle className="font-mono text-xs uppercase tracking-[0.3em] text-cyan mb-2">// BUILDER_GATEWAY</DialogTitle>
+          <DialogDescription className="text-2xl font-semibold text-foreground mb-1 tracking-tight">Build and train embodied AI.</DialogDescription>
+          <p className="text-sm text-muted-foreground mb-6 font-mono">Early access to the framework, compute, and curriculum. For developers, researchers, and anyone creating the future of robotics.</p>
 
           {!sent ? (
             <form onSubmit={submit} className="space-y-3">
@@ -52,7 +52,7 @@ export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenCha
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="operator@protocol.io"
+                  placeholder="builder@lab.com"
                   required
                   maxLength={120}
                   className="w-full bg-transparent border border-cyan/30 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-amber focus:shadow-[0_0_20px_hsl(45_100%_50%/0.4)] transition-all"
@@ -63,12 +63,12 @@ export const WaitlistModal = ({ open, onOpenChange }: { open: boolean; onOpenCha
                 disabled={loading}
                 className="w-full bg-amber text-obsidian font-mono text-sm font-semibold uppercase tracking-[0.2em] py-3 hover:shadow-[0_0_30px_hsl(45_100%_50%/0.7)] transition-all disabled:opacity-50"
               >
-                {loading ? "Transmitting…" : "Initialize_Handshake →"}
+                {loading ? "Transmitting…" : "Request Access →"}
               </button>
             </form>
           ) : (
             <div className="border border-amber/60 bg-amber/5 p-6 text-center font-mono">
-              <div className="text-amber text-xs uppercase tracking-[0.3em] mb-2">// HANDSHAKE_COMPLETE</div>
+              <div className="text-amber text-xs uppercase tracking-[0.3em] mb-2">// BUILDER_REGISTERED</div>
               <div className="text-2xl text-foreground text-glow-amber">ACCESS GRANTED</div>
             </div>
           )}
@@ -93,7 +93,7 @@ export const FloatingAccess = ({ onOpen }: { onOpen: () => void }) => {
       <div className="absolute inset-0 bg-amber/40 blur-xl group-hover:bg-amber/70 transition-all" />
       <div className="relative flex items-center gap-3 bg-obsidian border border-amber px-5 py-3 font-mono text-xs uppercase tracking-[0.25em] text-amber group-hover:bg-amber group-hover:text-obsidian transition-all">
         <span className="h-2 w-2 rounded-full bg-amber pulse-amber" />
-        Secure Alpha Access
+        Join the builder program
       </div>
     </button>
   );

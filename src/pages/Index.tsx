@@ -13,7 +13,7 @@ import robotWalk from "@/assets/edit-robot-walk.mp4.asset.json";
 import founderTanush from "@/assets/founder-tanush-exact.png";
 import founderAaryan from "@/assets/founder-aaryan-exact.png";
 import { CradleTraining } from "@/components/CradleTraining";
-import { WaitlistModal } from "@/components/Waitlist";
+import { WaitlistModal, FloatingAccess } from "@/components/Waitlist";
 import {
   MarketCurve,
   CradleRibbon,
@@ -91,12 +91,12 @@ const Index = () => {
             <span className="text-border">/</span>
             <a className="transition-colors hover:text-cyan" href="#team">Team</a>
           </nav>
-          <a
-            href="#materials"
+          <button
+            onClick={() => setOpen(true)}
             className="border border-primary/50 bg-primary px-5 py-2.5 font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
           >
-            Read the deck
-          </a>
+            Join the builder program
+          </button>
         </div>
       </header>
 
@@ -475,20 +475,26 @@ const Index = () => {
         <div className="container relative z-10 grid gap-10 md:grid-cols-12 md:items-center">
           <Reveal>
             <div className="md:col-span-7">
-              <Eyebrow tone="amber">Framework · Seed 2026</Eyebrow>
+              <Eyebrow tone="amber">Framework · Compute · Curriculum</Eyebrow>
               <h2 className="mt-6 text-5xl leading-[0.96] tracking-normal md:text-7xl" style={serif}>
-                Genesis Core is a framework we are bringing to life.
+                Build the future of robotics.
               </h2>
               <p className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Not a unit. Not a product SKU. A cognitive substrate — curriculum, silicon, simulation, and language — that any embodied platform can adopt to give its robots a mind of their own.
+                Genesis Core is not a product you buy. It is a framework and compute layer you build on. Create and train robots that learn like children — through curiosity, in real time, on sovereign silicon. Deploy minds, not just motors.
               </p>
             </div>
           </Reveal>
           <Reveal delay={140}>
             <div className="md:col-span-5 space-y-3">
+              <button
+                onClick={() => setOpen(true)}
+                className="flex w-full items-center justify-between gap-4 border border-primary/50 bg-primary px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
+              >
+                Join the builder program <ArrowUpRight className="h-4 w-4" />
+              </button>
               <a
                 href="#materials"
-                className="flex w-full items-center justify-between gap-4 border border-primary/50 bg-primary px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-primary-foreground shadow-[var(--glow-amber-soft)] transition-all hover:border-secondary hover:bg-secondary"
+                className="flex w-full items-center justify-between gap-4 border border-border bg-card/60 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-cyan/60 hover:text-cyan"
               >
                 Read the deck <ArrowUpRight className="h-4 w-4" />
               </a>
@@ -499,12 +505,6 @@ const Index = () => {
                 className="flex w-full items-center justify-between gap-4 border border-border bg-card/60 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-cyan/60 hover:text-cyan"
               >
                 Open the archive <ArrowUpRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#team"
-                className="flex w-full items-center justify-between gap-4 border border-border bg-card/60 px-6 py-5 font-mono text-[11px] uppercase tracking-[0.3em] text-foreground transition-colors hover:border-cyan/60 hover:text-cyan"
-              >
-                Talk to the founders <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
           </Reveal>
@@ -517,6 +517,7 @@ const Index = () => {
           <div>Curiosity rewarded · Made on Earth</div>
         </div>
       </footer>
+      <FloatingAccess onOpen={() => setOpen(true)} />
     </div>
   );
 };
